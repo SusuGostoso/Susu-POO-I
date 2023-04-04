@@ -19,4 +19,4 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 8/11](https://github.com/SusuGostoso/Susu-POO-I/commit/7521a347a768c5c7498c104204fda410fa79648b)
 - [Exercício 9/11](https://github.com/SusuGostoso/Susu-POO-I/commit/6342337ffaafd8630e94a9bf593cf208ed7c5766)
 - [Exercício 10/11](https://github.com/SusuGostoso/Susu-POO-I/commit/f5bec9883bd24066a37660917faac55bba233e0e)
-- [Exercício 11/11](https://github.com/SusuGostoso/Susu-POO-I)
+- [Exercício 11/11](https://github.com/SusuGostoso/Susu-POO-I/commit/7fb1caf770ae5cf0be08de296dc81bd50f442be0)
