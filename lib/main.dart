@@ -41,7 +41,14 @@ void main() {
             ),
           )
         ])),
-        bottomNavigationBar: Text("Botão 1"),
+        bottomNavigationBar: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Botão 1"),
+            Text("Botão 2"),
+            Text("Botão 3"),
+          ],
+        ),
       ));
 
   runApp(app);
