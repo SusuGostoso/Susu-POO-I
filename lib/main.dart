@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 
 void main() {
   MaterialApp app = MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.amber),
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+        textTheme: TextTheme(
+          bodyText2: TextStyle(
+            fontFamily: 'Open Sans',
+            fontSize: 25.0,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      ),
       home: Scaffold(
         appBar: AppBar(title: Text("Meu app")),
         body: Center(
