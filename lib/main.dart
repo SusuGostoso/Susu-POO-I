@@ -48,9 +48,10 @@ void main() {
               onPressed: () {},
               child: Text("Botão 1"),
             ),
-            ElevatedButton(
+            IconButton(
+              icon: Icon(Icons.add),
+              iconSize: 48,
               onPressed: () {},
-              child: Text("Botão 2"),
             ),
             ElevatedButton(
               onPressed: () {},
