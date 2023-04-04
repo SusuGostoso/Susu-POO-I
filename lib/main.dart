@@ -42,7 +42,8 @@ void main() {
           )
         ])),
         bottomNavigationBar: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment
+              .spaceEvenly, //Se eu usar o "MainAxisAlignment.center", eles ficam centralizados, mas não distribuídos da forma que eu prefiro.
           children: [
             ElevatedButton(
               onPressed: () {},
