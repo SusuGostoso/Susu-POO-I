@@ -49,11 +49,15 @@ void main() {
               decoration: TextDecoration.none,
             ),
           ),
-          Image.network(
-            'https://picsum.photos/200',
+          FadeInImage(
+            placeholder: AssetImage('images/carregando.gif'),
+            image: NetworkImage(
+                'https://i.ibb.co/KXjpnSn/8a0acf9f-376d-4312-ab12-bc74eacfcf0f.webp'),
             width: 200,
             height: 200,
-          )
+            fadeInDuration: Duration(milliseconds: 1000),
+            fadeOutDuration: Duration(milliseconds: 1000),
+          ),
         ])),
         bottomNavigationBar: Row(
           mainAxisAlignment: MainAxisAlignment
