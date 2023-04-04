@@ -48,6 +48,11 @@ void main() {
               color: Colors.indigo,
               decoration: TextDecoration.none,
             ),
+          ),
+          Image.network(
+            'https://picsum.photos/200',
+            width: 200,
+            height: 200,
           )
         ])),
         bottomNavigationBar: Row(
