@@ -4,8 +4,8 @@ void main() {
   MaterialApp app = MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        textTheme: TextTheme(
-          bodyText2: TextStyle(
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
             fontFamily: 'Open Sans',
             fontSize: 25.0,
             fontWeight: FontWeight.normal,
@@ -13,9 +13,9 @@ void main() {
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text("Meu app")),
+        appBar: AppBar(title: const Text("Meu app")),
         body: Center(
-            child: Column(children: [
+            child: Column(children: const [
           Text(
             "Apenas começando...",
             style: TextStyle(
@@ -65,16 +65,16 @@ void main() {
           children: [
             ElevatedButton(
               onPressed: () {},
-              child: Text("Botão 1"),
+              child: const Text("Botão 1"),
             ),
             IconButton(
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               iconSize: 48,
               onPressed: () {},
             ),
             ElevatedButton(
               onPressed: () {},
-              child: Text("Botão 3"),
+              child: const Text("Botão 3"),
             ),
           ],
         ),

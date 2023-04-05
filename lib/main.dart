@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: MyApp()));
+  runApp(const MaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cervejas',
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        textTheme: TextTheme(
-          bodyText2: TextStyle(
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
             fontFamily: 'Open Sans',
             fontSize: 25.0,
             fontWeight: FontWeight.normal,
@@ -21,16 +23,16 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Cervejas"),
+          title: const Text("Cervejas"),
         ),
         body: Container(
           width: double.infinity,
-          margin: EdgeInsets.symmetric(horizontal: 10.0),
+          margin: const EdgeInsets.symmetric(horizontal: 10.0),
           child: SingleChildScrollView(
             child: DataTable(
               columnSpacing: 50.0,
               horizontalMargin: 0,
-              columns: <DataColumn>[
+              columns: const <DataColumn>[
                 DataColumn(
                   label: Text(
                     'Nome',
@@ -50,7 +52,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ],
-              rows: <DataRow>[
+              rows: const <DataRow>[
                 DataRow(
                   cells: <DataCell>[
                     DataCell(Text('La Fin Du Monde')),
@@ -116,7 +118,7 @@ class MyApp extends StatelessWidget {
                 ),
                 DataRow(
                   cells: <DataCell>[
-                    const DataCell(Text('Franziskaner Hefe-Weisse')),
+                    DataCell(Text('Franziskaner Hefe-Weisse')),
                     DataCell(Text('Hefeweizen')),
                     DataCell(Text('15')),
                   ],
@@ -170,10 +172,10 @@ class MyApp extends StatelessWidget {
                   _showAlertDialog(context, "Apertou é gay",
                       "Você gostaria de me dar?", "Óbvio", "Claro");
                 },
-                child: Text("Não aperte"),
+                child: const Text("Não aperte"),
               ),
               IconButton(
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 iconSize: 48,
                 onPressed: () {},
               ),
@@ -182,7 +184,7 @@ class MyApp extends StatelessWidget {
                   _showAlertDialog(context, "Corno detectado",
                       "Você parou de ser corno?", "Sim", "Não");
                 },
-                child: Text("MagicButton"),
+                child: const Text("MagicButton"),
               ),
             ],
           ),
