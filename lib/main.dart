@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 
 class NewNavBar extends StatelessWidget {
-  const NewNavBar({super.key});
+  final List<IconData> icons;
+  final void Function(int) onButtonPressed;
+  final List<String> rotulos;
 
-  void botaoFoiTocado(int index) {
-    print("Tocaram no botão $index");
+  NewNavBar(
+      {required this.icons,
+      required this.onButtonPressed,
+      required this.rotulos});
+
+  List<BottomNavigationBarItem> _buildNavBarItems() {
+    return icons
+        .map((icon) => BottomNavigationBarItem(
+              icon: Icon(icon),
+              label: rotulos[icons.indexOf(icon)],
+            ))
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      onTap: botaoFoiTocado,
-      items: const [
-        BottomNavigationBarItem(
-          label: "Cafés",
-          icon: Icon(Icons.coffee_outlined),
-        ),
-        BottomNavigationBarItem(
-          label: "Cervejas",
-          icon: Icon(Icons.local_drink_outlined),
-        ),
-        BottomNavigationBarItem(
-          label: "Nações",
-          icon: Icon(Icons.flag_outlined),
-        )
-      ],
+      onTap: onButtonPressed,
+      items: _buildNavBarItems(),
     );
   }
 }
@@ -51,17 +50,17 @@ class NewBody extends StatelessWidget {
 }
 
 class NewAppBar extends AppBar {
-  NewAppBar()
+  NewAppBar({super.key})
       : super(
-          title: Text("Dicas"),
+          title: const Text("Dicas"),
           backgroundColor: Colors.deepPurple,
           actions: [
             IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               onPressed: () => print("Pesquisando..."),
             ),
             IconButton(
-              icon: Icon(Icons.favorite_border),
+              icon: const Icon(Icons.favorite_border),
               onPressed: () => print("Favoritos..."),
             ),
           ],
@@ -78,7 +77,11 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: NewAppBar(),
         body: NewBody(),
-        bottomNavigationBar: NewNavBar(),
+        bottomNavigationBar: NewNavBar(
+          icons: [Icons.home, Icons.favorite, Icons.add_a_photo],
+          onButtonPressed: (index) => print("Tocaram no botão $index"),
+          rotulos: ["Cafés", "Cervejas", "Nação"], //Label do ícone
+        ),
       ),
     );
   }
