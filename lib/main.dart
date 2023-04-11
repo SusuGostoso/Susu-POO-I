@@ -51,7 +51,7 @@ class NewBody extends StatelessWidget {
 }
 
 class NewAppBar extends AppBar {
-  NewAppBar()
+  NewAppBar() //Já tinha feito anteriormente
       : super(
           title: Text("Dicas"),
           backgroundColor: Colors.deepPurple,
