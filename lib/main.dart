@@ -50,7 +50,73 @@ class NewBode extends StatelessWidget {
 }
 
 class NewAppBar extends AppBar {
-  NewAppBar({super.key}) : super(title: const Text("Dicas"));
+  NewAppBar({super.key})
+      : super(
+          title: const Text("Dicas"),
+          actions: [
+            ColorMenuButton(),
+          ],
+        );
+}
+
+class ColorMenuButton extends StatefulWidget {
+  const ColorMenuButton({Key? key}) : super(key: key);
+
+  @override
+  _ColorMenuButtonState createState() => _ColorMenuButtonState();
+}
+
+class _ColorMenuButtonState extends State<ColorMenuButton> {
+  Color _selectedColor = Colors.red;
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<Color>(
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<Color>>[
+        PopupMenuItem<Color>(
+          value: Colors.red,
+          child: Text(
+            'Vermelho',
+            style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
+          ),
+        ),
+        PopupMenuItem<Color>(
+          value: Colors.blue,
+          child: Text(
+            'Azul',
+            style: TextStyle(
+              color: Colors.blue,
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
+          ),
+        ),
+        PopupMenuItem<Color>(
+          value: Colors.green,
+          child: Text(
+            'Verde',
+            style: TextStyle(
+              color: Colors.green,
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
+          ),
+        ),
+      ],
+      onSelected: (Color cor) {
+        setState(() {
+          _selectedColor = cor;
+        });
+
+        print("Cor selecionada: $cor");
+      },
+      icon: Icon(Icons.color_lens, color: _selectedColor),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
