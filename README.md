@@ -8,7 +8,7 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 
 - [Venda, Item e Produto](https://github.com/SusuGostoso/Susu-POO-I/commit/7c5df95a18ed71af844c0da9269f0c15620c05ec)
 
-### Tarefa 2
+### Tarefa 2 [Receita 1]
 - [Exercício 1/11](https://github.com/SusuGostoso/Susu-POO-I/commit/f0bae3c39409a8b612f544218ee895b59592efb4)
 - [Exercício 2/11](https://github.com/SusuGostoso/Susu-POO-I/commit/fc15c0a7183b6d0e9b40a01a883af846a35bf493)
 - [Exercício 3/11](https://github.com/SusuGostoso/Susu-POO-I/commit/fd4c4e22a18e3e3a23806e86b5b91d0e8bb9a265)
@@ -20,3 +20,9 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 9/11](https://github.com/SusuGostoso/Susu-POO-I/commit/6342337ffaafd8630e94a9bf593cf208ed7c5766)
 - [Exercício 10/11](https://github.com/SusuGostoso/Susu-POO-I/commit/f5bec9883bd24066a37660917faac55bba233e0e)
 - [Exercício 11/11](https://github.com/SusuGostoso/Susu-POO-I/commit/7fb1caf770ae5cf0be08de296dc81bd50f442be0)
+
+### Tarefa 3 [Receita 2]
+- [Exercício 1/4](https://github.com/SusuGostoso/Susu-POO-I/commit/a7cb6308acc9d8f9d2c35e018831f6d636ce69e8) 
+- [Exercício 2/4](https://github.com/SusuGostoso/Susu-POO-I/commit/7f8750b2a4251ae36614506019b4d2603a6d64dd)
+- [Exercício 3/4](https://github.com/SusuGostoso/Susu-POO-I/commit/a936a35b00dcd9a3920b3d51f86b57b6a9d0b6d7)
+- [Exercício 4/4](https://github.com/SusuGostoso/Susu-POO-I/commit/d2cafa24fd142bd75475b5c3d41be00da65e07c4)
