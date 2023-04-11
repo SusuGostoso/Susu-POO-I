@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NewNavBar extends StatelessWidget {
-  NewNavBar();
+  const NewNavBar({super.key});
 
   void botaoFoiTocado(int index) {
     print("Tocaram no botão $index");
@@ -51,7 +51,7 @@ class NewBody extends StatelessWidget {
 }
 
 class NewAppBar extends AppBar {
-  NewAppBar() //Já tinha feito anteriormente
+  NewAppBar()
       : super(
           title: Text("Dicas"),
           backgroundColor: Colors.deepPurple,
@@ -68,14 +68,23 @@ class NewAppBar extends AppBar {
         );
 }
 
-void main() {
-  MaterialApp app = MaterialApp(
-    home: Scaffold(
-      appBar: NewAppBar(),
-      body: NewBody(),
-      bottomNavigationBar: NewNavBar(),
-    ),
-  );
+class MyApp extends StatelessWidget {
+  const MyApp();
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      home: Scaffold(
+        appBar: NewAppBar(),
+        body: NewBody(),
+        bottomNavigationBar: NewNavBar(),
+      ),
+    );
+  }
+}
+
+void main() {
+  MyApp app = const MyApp();
   runApp(app);
 }
