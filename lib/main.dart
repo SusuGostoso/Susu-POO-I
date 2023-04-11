@@ -54,7 +54,7 @@ class NewAppBar extends AppBar {
       : super(
           title: const Text("Dicas"),
           actions: [
-            ColorMenuButton(),
+            ColorMenuButton(), //Não ficou grande pois adicionei uma classe (State)
           ],
         );
 }
