@@ -10,7 +10,7 @@ class NewNavBar extends StatelessWidget {
       required this.onButtonPressed,
       required this.rotulos});
 
-  List<BottomNavigationBarItem> construirNavBar() {
+  List<BottomNavigationBarItem> _buildNavBarItems() {
     return icons
         .map((icon) => BottomNavigationBarItem(
               icon: Icon(icon),
@@ -23,59 +23,64 @@ class NewNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       onTap: onButtonPressed,
-      items: construirNavBar(),
+      items: _buildNavBarItems(),
     );
   }
 }
 
-class NewBode extends StatelessWidget {
-  List<String> objects;
-  NewBode({this.objects = const []});
-
-  Expanded processarUmElemento(String obj) {
-    return Expanded(
-      child: Center(child: Text(obj)),
-    );
-  }
+class NewBody extends StatelessWidget {
+  const NewBody();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: objects
-            .map((obj) => Expanded(
-                  child: Center(child: Text(obj)),
-                ))
-            .toList());
+      children: [
+        Expanded(
+          child: Text("La Fin Du Monde - Bock - 65 ibu"),
+        ),
+        Expanded(
+          child: Text("Sapporo Premiume - Sour Ale - 54 ibu"),
+        ),
+        Expanded(
+          child: Text("Duvel - Pilsner - 82 ibu"),
+        ),
+      ],
+    );
   }
 }
 
 class NewAppBar extends AppBar {
-  NewAppBar({super.key}) : super(title: const Text("Dicas"));
+  NewAppBar({super.key})
+      : super(
+          title: const Text("Dicas"),
+          backgroundColor: Colors.deepPurple,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () => print("Pesquisando..."),
+            ),
+            IconButton(
+              icon: const Icon(Icons.favorite_border),
+              onPressed: () => print("Favoritos..."),
+            ),
+          ],
+        );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: NewAppBar(),
-        body: NewBode(objects: [
-          "La Fin Du Monde - Bock - 65 ibu",
-          "Sapporo Premiume - Sour Ale - 54 ibu",
-          "Duvel - Pilsner - 82 ibu"
-        ]),
+        body: NewBody(),
         bottomNavigationBar: NewNavBar(
-          icons: const [
-            Icons.coffee_outlined,
-            Icons.local_drink_outlined,
-            Icons.flag_outlined
-          ],
+          icons: [Icons.home, Icons.favorite, Icons.add_a_photo],
           onButtonPressed: (index) => print("Tocaram no botão $index"),
-          rotulos: const ["Cafés", "Cervejas", "Nações"], //Label do ícone
+          rotulos: ["Cafés", "Cervejas", "Nação"], //Label do ícone
         ),
       ),
     );
