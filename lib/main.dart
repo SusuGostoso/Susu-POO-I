@@ -1,36 +1,56 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  MyApp app = MyApp();
+
+  runApp(app);
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(primarySwatch: Colors.deepPurple),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text("Dicas"),
+          ),
+          body: DataBodyWidget(objects: [
+            "La Fin Du Monde - Bock - 65 ibu",
+            "Sapporo Premiume - Sour Ale - 54 ibu",
+            "Duvel - Pilsner - 82 ibu"
+          ]),
+          bottomNavigationBar: NewNavBar(),
+        ));
+  }
+}
+
 class NewNavBar extends StatelessWidget {
-  final List<IconData> icons;
-  final void Function(int) onButtonPressed;
-  final List<String> rotulos;
+  NewNavBar();
 
-  NewNavBar(
-      {required this.icons,
-      required this.onButtonPressed,
-      required this.rotulos});
-
-  List<BottomNavigationBarItem> construirNavBar() {
-    return icons
-        .map((icon) => BottomNavigationBarItem(
-              icon: Icon(icon),
-              label: rotulos[icons.indexOf(icon)],
-            ))
-        .toList();
+  void botaoFoiTocado(int index) {
+    print("Tocaram no botão $index");
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      onTap: onButtonPressed,
-      items: construirNavBar(),
-    );
+    return BottomNavigationBar(onTap: botaoFoiTocado, items: const [
+      BottomNavigationBarItem(
+        label: "Cafés",
+        icon: Icon(Icons.coffee_outlined),
+      ),
+      BottomNavigationBarItem(
+          label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
+      BottomNavigationBarItem(label: "Nações", icon: Icon(Icons.flag_outlined))
+    ]);
   }
 }
 
-class NewBode extends StatelessWidget {
+class DataBodyWidget extends StatelessWidget {
   List<String> objects;
-  NewBode({this.objects = const []});
+
+  DataBodyWidget({this.objects = const []});
 
   Expanded processarUmElemento(String obj) {
     return Expanded(
@@ -47,108 +67,4 @@ class NewBode extends StatelessWidget {
                 ))
             .toList());
   }
-}
-
-class NewAppBar extends AppBar {
-  NewAppBar({super.key})
-      : super(
-          title: const Text("Dicas"),
-          actions: [
-            ColorMenuButton(), //Não ficou grande pois adicionei uma classe (State)
-          ],
-        );
-}
-
-class ColorMenuButton extends StatefulWidget {
-  const ColorMenuButton({Key? key}) : super(key: key);
-
-  @override
-  _ColorMenuButtonState createState() => _ColorMenuButtonState();
-}
-
-class _ColorMenuButtonState extends State<ColorMenuButton> {
-  Color _selectedColor = Colors.red;
-
-  @override
-  Widget build(BuildContext context) {
-    return PopupMenuButton<Color>(
-      itemBuilder: (BuildContext context) => <PopupMenuEntry<Color>>[
-        PopupMenuItem<Color>(
-          value: Colors.red,
-          child: Text(
-            'Vermelho',
-            style: TextStyle(
-              color: Colors.red,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
-            ),
-          ),
-        ),
-        PopupMenuItem<Color>(
-          value: Colors.blue,
-          child: Text(
-            'Azul',
-            style: TextStyle(
-              color: Colors.blue,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
-            ),
-          ),
-        ),
-        PopupMenuItem<Color>(
-          value: Colors.green,
-          child: Text(
-            'Verde',
-            style: TextStyle(
-              color: Colors.green,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
-            ),
-          ),
-        ),
-      ],
-      onSelected: (Color cor) {
-        setState(() {
-          _selectedColor = cor;
-        });
-
-        print("Cor selecionada: $cor");
-      },
-      icon: Icon(Icons.color_lens, color: _selectedColor),
-    );
-  }
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: NewAppBar(),
-        body: NewBode(objects: [
-          "La Fin Du Monde - Bock - 65 ibu",
-          "Sapporo Premiume - Sour Ale - 54 ibu",
-          "Duvel - Pilsner - 82 ibu"
-        ]),
-        bottomNavigationBar: NewNavBar(
-          icons: const [
-            Icons.coffee_outlined,
-            Icons.local_drink_outlined,
-            Icons.flag_outlined
-          ],
-          onButtonPressed: (index) => print("Tocaram no botão $index"),
-          rotulos: const ["Cafés", "Cervejas", "Nações"], //Label do ícone
-        ),
-      ),
-    );
-  }
-}
-
-void main() {
-  MyApp app = const MyApp();
-  runApp(app);
 }
