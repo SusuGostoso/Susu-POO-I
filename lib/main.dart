@@ -50,7 +50,7 @@ class NewNavBar extends StatelessWidget {
 }
 
 class DataBodyWidget extends StatelessWidget {
-  List<String> objects;
+  List objects;
 
   DataBodyWidget({this.objects = const []});
 
@@ -65,7 +65,7 @@ class DataBodyWidget extends StatelessWidget {
           ))
         ],
         rows: objects
-            .map((obj) => DataRow(cells: [DataCell(Text(obj))]))
+            .map((obj) => DataRow(cells: [DataCell(Text('$obj'))]))
             .toList());
   }
 }
