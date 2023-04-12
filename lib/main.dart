@@ -56,28 +56,21 @@ class DataBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var columnNames = ["Nome", "Estilo", "IBU"],
+        propertyNames = ["name", "style", "ibu"];
+
     return DataTable(
-        columns: [
-          DataColumn(
-              label: Expanded(
-            child: Text("Nome", style: TextStyle(fontStyle: FontStyle.italic)),
-          )),
-          DataColumn(
-              label: Expanded(
-            child:
-                Text("Estilo", style: TextStyle(fontStyle: FontStyle.italic)),
-          )),
-          DataColumn(
-              label: Expanded(
-            child: Text("IBU", style: TextStyle(fontStyle: FontStyle.italic)),
-          ))
-        ],
+        columns: columnNames
+            .map((name) => DataColumn(
+                label: Expanded(
+                    child: Text(name,
+                        style: TextStyle(fontStyle: FontStyle.italic)))))
+            .toList(),
         rows: objects
-            .map((obj) => DataRow(cells: [
-                  DataCell(Text(obj["name"])),
-                  DataCell(Text(obj["style"])),
-                  DataCell(Text(obj["ibu"]))
-                ]))
+            .map((obj) => DataRow(
+                cells: propertyNames
+                    .map((propName) => DataCell(Text(obj[propName])))
+                    .toList()))
             .toList());
   }
 }
