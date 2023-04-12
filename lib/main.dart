@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 var dataObjects = [
-  "La Fin Du Monde - Bock - 65 ibu",
-  "Sapporo Premiume - Sour Ale - 54 ibu",
-  "Duvel - Pilsner - 82 ibu"
+  {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
+  {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
+  {"name": "Duvel", "style": "Pilsner", "ibu": "82"}
 ];
 
 void main() {
