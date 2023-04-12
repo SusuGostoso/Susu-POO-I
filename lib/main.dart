@@ -60,12 +60,24 @@ class DataBodyWidget extends StatelessWidget {
         columns: [
           DataColumn(
               label: Expanded(
-            child: Text("Descrição",
-                style: TextStyle(fontStyle: FontStyle.italic)),
+            child: Text("Nome", style: TextStyle(fontStyle: FontStyle.italic)),
+          )),
+          DataColumn(
+              label: Expanded(
+            child:
+                Text("Estilo", style: TextStyle(fontStyle: FontStyle.italic)),
+          )),
+          DataColumn(
+              label: Expanded(
+            child: Text("IBU", style: TextStyle(fontStyle: FontStyle.italic)),
           ))
         ],
         rows: objects
-            .map((obj) => DataRow(cells: [DataCell(Text('$obj'))]))
+            .map((obj) => DataRow(cells: [
+                  DataCell(Text(obj["name"])),
+                  DataCell(Text(obj["style"])),
+                  DataCell(Text(obj["ibu"]))
+                ]))
             .toList());
   }
 }
