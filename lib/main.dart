@@ -54,19 +54,18 @@ class DataBodyWidget extends StatelessWidget {
 
   DataBodyWidget({this.objects = const []});
 
-  Expanded processarUmElemento(String obj) {
-    return Expanded(
-      child: Center(child: Text(obj)),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: objects
-            .map((obj) => Expanded(
-                  child: Center(child: Text(obj)),
-                ))
+    return DataTable(
+        columns: [
+          DataColumn(
+              label: Expanded(
+            child: Text("Descrição",
+                style: TextStyle(fontStyle: FontStyle.italic)),
+          ))
+        ],
+        rows: objects
+            .map((obj) => DataRow(cells: [DataCell(Text(obj))]))
             .toList());
   }
 }
