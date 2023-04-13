@@ -6,7 +6,7 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 
 ### Tarefa 1
 
-- [Venda, Item e Produto](https://github.com/SusuGostoso/Susu-POO-I/commit/7c5df95a18ed71af844c0da9269f0c15620c05ec)
+> [Venda, Item e Produto](https://github.com/SusuGostoso/Susu-POO-I/commit/7c5df95a18ed71af844c0da9269f0c15620c05ec)
 
 ### Tarefa 2 [Receita 1]
 - [Exercício 1/11](https://github.com/SusuGostoso/Susu-POO-I/commit/f0bae3c39409a8b612f544218ee895b59592efb4)
@@ -35,4 +35,7 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 ### Tarefa 5 [Receita 4]
 > [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/be398350d8ad7ba456b5895edbda56af82212ac2) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/fc8a21f7b63d97606c0018b4d326c4f42da9205d) / [Passo 3](https://github.com/SusuGostoso/Susu-POO-I/commit/168187c721c15ff24f1504b0fad1b72e8454e8fc) / [Passo 4](https://github.com/SusuGostoso/Susu-POO-I/commit/a998e6c24ee10ddaeda4aa5587330fc3e5ed7580) / [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/bc0d404ddb1669e468b91c453b3cb8ab28c5ad94) / [Passo 6](https://github.com/SusuGostoso/Susu-POO-I/commit/2a34c38526e4d6c06f150f37cedc49c4daf2aa3c) / [Passo 7](https://github.com/SusuGostoso/Susu-POO-I/commit/01b733735ea750d922e96384c1c314da8c431697)
 
-- [Exercício 1/4](https://github.com/SusuGostoso/Susu-POO-I/tree/master) 
+- [Exercício 1/4](https://github.com/SusuGostoso/Susu-POO-I/tree/master)
+- [Exercício 2/4](https://github.com/SusuGostoso/Susu-POO-I/tree/master) 
+- [Exercício 3/4](https://github.com/SusuGostoso/Susu-POO-I/tree/master) 
+- [Exercício 4/4](https://github.com/SusuGostoso/Susu-POO-I/tree/master) 
