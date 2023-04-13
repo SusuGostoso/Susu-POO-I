@@ -62,10 +62,17 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text("Dicas"),
           ),
+          /*
           body: DataBodyWidget(
             objects: coffeeData,
             columns: ['name', 'origin', 'notes'],
             columnLabels: ['Nome', 'Origem', 'Notas'],
+          ),
+          */
+          body: MyListViewWidget(
+            objects: coffeeData,
+            columns: ['name', 'origin', 'notes'],
+            propertyMap: {'name': "Nome", 'origin': 'Origem', 'notes': 'Notas'},
           ),
           bottomNavigationBar: NewNavBar(),
         ));
@@ -147,6 +154,102 @@ class DataBodyWidget extends StatelessWidget {
           rows: dataRows,
         ),
       ),
+    );
+  }
+}
+
+class MyTileWidget extends StatelessWidget {
+  final List objects;
+  final List<String> columns;
+  final Map<String, String> propertyMap;
+  final List<String> columnLabels;
+
+  MyTileWidget({
+    required this.objects,
+    required this.columns,
+    this.propertyMap = const {},
+    this.columnLabels = const [],
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> columnNames =
+        columnLabels.isNotEmpty ? columnLabels : columns;
+
+    return ListView.builder(
+      itemCount: objects.length,
+      itemBuilder: (BuildContext context, int index) {
+        final obj = objects[index];
+        final tiles = columns.map(
+          (propName) {
+            final label = propertyMap[propName] ?? propName;
+            final value = obj[propName]?.toString() ?? '';
+            return ListTile(
+              leading: Icon(Icons.local_drink),
+              title: Text(label),
+              subtitle: Text(value),
+            );
+          },
+        ).toList();
+
+        return Card(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: tiles,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class MyListViewWidget extends StatelessWidget {
+  final List objects;
+  final List<String> columns;
+  final Map<String, String> propertyMap;
+  final List<String> columnLabels;
+
+  MyListViewWidget({
+    required this.objects,
+    required this.columns,
+    this.propertyMap = const {},
+    this.columnLabels = const [],
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> columnNames =
+        columnLabels.isNotEmpty ? columnLabels : columns;
+
+    return ListView.builder(
+      itemCount: objects.length,
+      itemBuilder: (BuildContext context, int index) {
+        final obj = objects[index];
+        final tiles = columns.map(
+          (propName) {
+            final label = propertyMap[propName] ?? propName;
+            final value = obj[propName]?.toString() ?? '';
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
+                  SizedBox(height: 4),
+                  Text(value),
+                ],
+              ),
+            );
+          },
+        ).toList();
+
+        return Card(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: tiles,
+          ),
+        );
+      },
     );
   }
 }
