@@ -52,30 +52,12 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text("Dicas"),
           ),
-          body: DataBodyWidget(objects: dataObjects),
+          body: MyTileWidget(
+            data: dataObjects,
+            columns: ["name", "style", "ibu"],
+          ),
           bottomNavigationBar: NewNavBar(),
         ));
-  }
-}
-
-class NewNavBar extends StatelessWidget {
-  NewNavBar();
-
-  void botaoFoiTocado(int index) {
-    print("Tocaram no botão $index");
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(onTap: botaoFoiTocado, items: const [
-      BottomNavigationBarItem(
-        label: "Cafés",
-        icon: Icon(Icons.coffee_outlined),
-      ),
-      BottomNavigationBarItem(
-          label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
-      BottomNavigationBarItem(label: "Nações", icon: Icon(Icons.flag_outlined))
-    ]);
   }
 }
 
@@ -109,5 +91,53 @@ class DataBodyWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class MyTileWidget extends StatelessWidget {
+  final List data;
+  final List<String> columns;
+
+  MyTileWidget({required this.data, required this.columns});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          leading: Icon(Icons.local_drink),
+          title: Text(data[index][columns[0]]),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Estilo: ${data[index][columns[1]]}"),
+              Text("IBU: ${data[index][columns[2]]}"),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class NewNavBar extends StatelessWidget {
+  NewNavBar();
+
+  void botaoFoiTocado(int index) {
+    print("Tocaram no botão $index");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(onTap: botaoFoiTocado, items: const [
+      BottomNavigationBarItem(
+        label: "Cafés",
+        icon: Icon(Icons.coffee_outlined),
+      ),
+      BottomNavigationBarItem(
+          label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
+      BottomNavigationBarItem(label: "Nações", icon: Icon(Icons.flag_outlined))
+    ]);
   }
 }
