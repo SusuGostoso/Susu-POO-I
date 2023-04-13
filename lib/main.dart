@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+var coffeeData = [
+  {'name': 'Café do Brasil', 'origin': 'Brasil', 'notes': 'Caramelo, nozes'},
+  {'name': 'Café da Etiópia', 'origin': 'Etiópia', 'notes': 'Floral, frutado'},
+  {
+    'name': 'Café do Vietnã',
+    'origin': 'Vietnã',
+    'notes': 'Chocolate, especiarias'
+  },
+];
+
 var dataObjects = [
   {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
   {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
@@ -52,72 +62,13 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text("Dicas"),
           ),
-          body: MyTileWidget(
-            data: dataObjects,
-            columns: ["name", "style", "ibu"],
+          body: DataBodyWidget(
+            objects: coffeeData,
+            columns: ['name', 'origin', 'notes'],
+            columnLabels: ['Nome', 'Origem', 'Notas'],
           ),
           bottomNavigationBar: NewNavBar(),
         ));
-  }
-}
-
-class DataBodyWidget extends StatelessWidget {
-  List objects;
-
-  DataBodyWidget({this.objects = const []});
-
-  @override
-  Widget build(BuildContext context) {
-    var columnNames = ["Nome", "Estilo", "IBU"],
-        propertyNames = ["name", "style", "ibu"];
-
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: DataTable(
-          columns: columnNames
-              .map((name) => DataColumn(
-                  label: Expanded(
-                      child: Text(name,
-                          style: TextStyle(fontStyle: FontStyle.italic)))))
-              .toList(),
-          rows: objects
-              .map((obj) => DataRow(
-                  cells: propertyNames
-                      .map((propName) => DataCell(Text(obj[propName])))
-                      .toList()))
-              .toList(),
-        ),
-      ),
-    );
-  }
-}
-
-class MyTileWidget extends StatelessWidget {
-  final List data;
-  final List<String> columns;
-
-  MyTileWidget({required this.data, required this.columns});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: data.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: Icon(Icons.local_drink),
-          title: Text(data[index][columns[0]]),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Estilo: ${data[index][columns[1]]}"),
-              Text("IBU: ${data[index][columns[2]]}"),
-            ],
-          ),
-        );
-      },
-    );
   }
 }
 
@@ -139,5 +90,63 @@ class NewNavBar extends StatelessWidget {
           label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
       BottomNavigationBarItem(label: "Nações", icon: Icon(Icons.flag_outlined))
     ]);
+  }
+}
+
+class DataBodyWidget extends StatelessWidget {
+  final List objects;
+  final List<String> columns;
+  final Map<String, String> propertyMap;
+  final List<String> columnLabels;
+
+  DataBodyWidget({
+    required this.objects,
+    required this.columns,
+    this.propertyMap = const {},
+    this.columnLabels = const [],
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> columnNames =
+        columnLabels.isNotEmpty ? columnLabels : columns;
+    final List<DataColumn> dataColumns = columnNames.map(
+      (name) {
+        return DataColumn(
+          label: Expanded(
+            child: Text(
+              name,
+              style: const TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+        );
+      },
+    ).toList();
+
+    final List<DataRow> dataRows = objects.map(
+      (obj) {
+        return DataRow(
+          cells: columns.map(
+            (propName) {
+              final label = propertyMap[propName] ?? propName;
+              final value = obj[propName]?.toString() ?? '';
+              return DataCell(Text(value),
+                  placeholder: false, showEditIcon: false);
+            },
+          ).toList(),
+        );
+      },
+    ).toList();
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: DataTable(
+          columns: dataColumns,
+          rows: dataRows,
+        ),
+      ),
+    );
   }
 }
