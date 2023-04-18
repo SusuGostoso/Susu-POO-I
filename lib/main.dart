@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class NewNavBar extends StatelessWidget {
+class NewNavBar extends HookWidget {
   NewNavBar();
 
   void buttonTapped(int index) {
@@ -34,9 +34,11 @@ class NewNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var state = useState(1);
+
     return BottomNavigationBar(
         onTap: buttonTapped,
-        currentIndex: 1,
+        currentIndex: state.value,
         items: const [
           BottomNavigationBarItem(
             label: "Cafés",
