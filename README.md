@@ -45,5 +45,5 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 ### Tarefa 6 [[Receita 5]](https://drive.google.com/file/d/1rVYqDQZ5oJKHDuhUx0dfbNrFd-3PtWxg/view?usp=share_link) :heavy_check_mark:
 > [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/0dba1d6d8a8bc52b4107c4f7404abd0b95b26938) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/ebe3cb1623fca1c1cc4d90b71cf14bf02d95ec11) / [Passo 3](https://github.com/SusuGostoso/Susu-POO-I/commit/9a8572df7f3abf25a0649b668be33dddf57f6a4f) / [Passo 4](https://github.com/SusuGostoso/Susu-POO-I/commit/5ba9a41123a0241cb9ddb9753dba4b495a4b974a) / [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/5847394334c5170e937670ef64029049ae54e9ba)
 
-- [Exercício 1/2]() | [Print :camera:](https://i.ibb.co/NnmBDvr/PRINT-TAREFA-6.png) | [:computer: Demo Online](https://zapp.run/edit/receita-5-exercicio-1-zz9m062ez9n0)
-- [Exercício 2/2]() | [Print :camera:](https://i.ibb.co/NnmBDvr/PRINT-TAREFA-6.png) | [:computer: Demo Online](https://zapp.run/edit/receita-5-exercicio-1-zz9m062ez9n0)
+- [Exercício 1/2](https://github.com/SusuGostoso/Susu-POO-I/commit/837b331b3a90da150e74dcce3e7cb91b2800a773) | [Print :camera:](https://i.ibb.co/NnmBDvr/PRINT-TAREFA-6.png) | [:computer: Demo Online](https://zapp.run/edit/receita-5-exercicio-1-zz9m062ez9n0)
+- [Exercício 2/2]() | [Print :camera:](https://i.ibb.co/27X7L3p/PRINT-TAREFA-6-EXERCICIO-2.png) | [:computer: Demo Online](https://zapp.run/edit/receita-5-exercicio-2-zn9q06k9n9r0)

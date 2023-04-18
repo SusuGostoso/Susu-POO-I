@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             title: const Text("Dicas"),
           ),
           body: DataTableWidget(jsonObjects: dataObjects),
-          bottomNavigationBar: NewNavBar(),
+          bottomNavigationBar: NewNavBar2(),
         ));
   }
 }
@@ -49,6 +49,46 @@ class NewNavBar extends HookWidget {
           BottomNavigationBarItem(
               label: "Nações", icon: Icon(Icons.flag_outlined))
         ]);
+  }
+}
+
+class NewNavBar2 extends StatefulWidget {
+  const NewNavBar2();
+
+  @override
+  _NewNavBar2State createState() => _NewNavBar2State();
+}
+
+class _NewNavBar2State extends State<NewNavBar2> {
+  int _selectedIndex = 1;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print("no build da classe NewNavBar2");
+    return BottomNavigationBar(
+      onTap: _onItemTapped,
+      currentIndex: _selectedIndex,
+      items: const [
+        BottomNavigationBarItem(
+          label: "Cafés",
+          icon: Icon(Icons.coffee_outlined),
+        ),
+        BottomNavigationBarItem(
+          label: "Cervejas",
+          icon: Icon(Icons.local_drink_outlined),
+        ),
+        BottomNavigationBarItem(
+          label: "Nações",
+          icon: Icon(Icons.flag_outlined),
+        ),
+      ],
+    );
   }
 }
 
