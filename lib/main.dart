@@ -28,16 +28,14 @@ class MyApp extends StatelessWidget {
 class NewNavBar extends HookWidget {
   NewNavBar();
 
-  void buttonTapped(int index) {
-    print("Tocaram no botão $index");
-  }
-
   @override
   Widget build(BuildContext context) {
     var state = useState(1);
 
     return BottomNavigationBar(
-        onTap: buttonTapped,
+        onTap: (index) {
+          state.value = index;
+        },
         currentIndex: state.value,
         items: const [
           BottomNavigationBarItem(
