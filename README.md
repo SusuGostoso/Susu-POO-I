@@ -41,7 +41,7 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 4/4](https://github.com/SusuGostoso/Susu-POO-I/commit/ddbd6660ed6e4125e0f38ef218d548a2d6e4b730) | [Print :camera:](https://i.ibb.co/RDR79wV/imagem-2023-04-12-213302824.png) | [:computer: Demo Online](https://zapp.run/edit/tarefa-5-exercicio-4-zsc0657sd06)
 
 ### Tarefa 6 [[Montagem de Formulários]](https://drive.google.com/file/d/1DAEEGXV-pCyJ7VrTgEf1XAA_cck0zkrC/view?usp=share_link) :heavy_check_mark:
-> [App Flutter com vários tipos de forms](https://github.com/SusuGostoso/Susu-POO-I/tree/master) | [:camera: Print](https://github.com/SusuGostoso/Susu-POO-I/tree/master) | [:computer: Demo Online](https://github.com/SusuGostoso/Susu-POO-I/tree/master)
+> [App Flutter com vários tipos de forms](https://github.com/SusuGostoso/Susu-POO-I/commit/ac2de743f819d55bc1a4db75f9cd3d44368bfcd5) | [:computer: Demo Online](https://zapp.run/edit/flutter-forms-zt006nsu106)
 
 ## Unidade :two:
 
