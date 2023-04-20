@@ -1,121 +1,115 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
-var dataObjects = [];
+enum Genero { masculino, feminino }
 
-void main() {
-  MyApp app = MyApp();
-
-  runApp(app);
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print("no build da classe MyApp");
     return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.deepPurple),
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Dicas"),
-          ),
-          body: DataTableWidget(jsonObjects: dataObjects),
-          bottomNavigationBar: NewNavBar2(),
-        ));
-  }
-}
-
-class NewNavBar extends HookWidget {
-  NewNavBar();
-
-  @override
-  Widget build(BuildContext context) {
-    print("no build da classe NewNavBar");
-    var state = useState(1);
-
-    return BottomNavigationBar(
-        onTap: (index) {
-          state.value = index;
-        },
-        currentIndex: state.value,
-        items: const [
-          BottomNavigationBarItem(
-            label: "Cafés",
-            icon: Icon(Icons.coffee_outlined),
-          ),
-          BottomNavigationBarItem(
-              label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
-          BottomNavigationBarItem(
-              label: "Nações", icon: Icon(Icons.flag_outlined))
-        ]);
-  }
-}
-
-class NewNavBar2 extends StatefulWidget {
-  const NewNavBar2();
-
-  @override
-  _NewNavBar2State createState() => _NewNavBar2State();
-}
-
-class _NewNavBar2State extends State<NewNavBar2> {
-  int _selectedIndex = 1;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    print("no build da classe NewNavBar2");
-    return BottomNavigationBar(
-      onTap: _onItemTapped,
-      currentIndex: _selectedIndex,
-      items: const [
-        BottomNavigationBarItem(
-          label: "Cafés",
-          icon: Icon(Icons.coffee_outlined),
-        ),
-        BottomNavigationBarItem(
-          label: "Cervejas",
-          icon: Icon(Icons.local_drink_outlined),
-        ),
-        BottomNavigationBarItem(
-          label: "Nações",
-          icon: Icon(Icons.flag_outlined),
-        ),
-      ],
+      title: 'Flutter Form Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyForm(),
     );
   }
 }
 
-class DataTableWidget extends StatelessWidget {
-  final List jsonObjects;
+class MyForm extends StatefulWidget {
+  @override
+  _MyFormState createState() => _MyFormState();
+}
 
-  DataTableWidget({this.jsonObjects = const []});
+class _MyFormState extends State<MyForm> {
+  Genero? _generoSelecionado;
+  bool _termosAceitos = false;
+
+  void _submitForm() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Formulário está sendo processado...'),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    print("no build da classe DataTableWidget");
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Meu formulário'),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Nome',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'E-mail',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Repita o E-mail',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            const Text('Gênero'),
+            RadioListTile(
+              title: const Text('Masculino'),
+              value: Genero.masculino,
+              groupValue: _generoSelecionado,
+              onChanged: (Genero? value) {
+                setState(() {
+                  _generoSelecionado = value;
+                });
+              },
+            ),
+            RadioListTile(
+              title: const Text('Feminino'),
+              value: Genero.feminino,
+              groupValue: _generoSelecionado,
+              onChanged: (Genero? value) {
+                setState(() {
+                  _generoSelecionado = value;
+                });
+              },
+            ),
+            const SizedBox(height: 16),
+            const Text('Termos de uso'),
+            SwitchListTile(
+              title: const Text('Aceito os termos de uso'),
+              value: _termosAceitos,
+              onChanged: (bool value) {
+                setState(() {
+                  _termosAceitos = value;
+                });
+              },
+            ),
 
-    var columnNames = ["Nome", "Estilo", "IBU"],
-        propertyNames = ["name", "style", "ibu"];
-
-    return DataTable(
-        columns: columnNames
-            .map((name) => DataColumn(
-                label: Expanded(
-                    child: Text(name,
-                        style: TextStyle(fontStyle: FontStyle.italic)))))
-            .toList(),
-        rows: jsonObjects
-            .map((obj) => DataRow(
-                cells: propertyNames
-                    .map((propName) => DataCell(Text(obj[propName])))
-                    .toList()))
-            .toList());
+            //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: _content ,duration: Duration(milliseconds: 200),));
+            const SizedBox(height: 16),
+            ElevatedButton(
+              child: const Text('Enviar'),
+              onPressed: () {
+                _submitForm();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
