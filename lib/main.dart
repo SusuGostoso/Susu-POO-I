@@ -5,6 +5,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
 //var dataObjects = [];
 
+void carregar(index) {
+  if (index == 1) carregarCervejas();
+}
+
 void carregarCervejas() {
   tableStateNotifier.value = [
     {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
@@ -37,8 +41,7 @@ class MyApp extends StatelessWidget {
                     propertyNames: ["name", "style", "ibu"],
                     columnNames: ["Nome", "Estilo", "IBU"]);
               }),
-          bottomNavigationBar:
-              NewNavBar(itemSelectedCallback: carregarCervejas),
+          bottomNavigationBar: NewNavBar(itemSelectedCallback: carregar),
         ));
   }
 }
@@ -58,7 +61,7 @@ class NewNavBar extends HookWidget {
         onTap: (index) {
           state.value = index;
 
-          itemSelectedCallback();
+          itemSelectedCallback(index);
 
           //carregarCervejas();
         },
