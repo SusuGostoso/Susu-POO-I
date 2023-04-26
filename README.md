@@ -52,5 +52,5 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 2/2](https://github.com/SusuGostoso/Susu-POO-I/commit/11e4239b53e336da505ca60c1ea4b1cd6c511ebb) | [Print :camera:](https://i.ibb.co/27X7L3p/PRINT-TAREFA-6-EXERCICIO-2.png) | [:computer: Demo Online](https://zapp.run/edit/receita-5-exercicio-2-zn9q06k9n9r0)
 
 ### Tarefa 2 [[Receita 6]](https://drive.google.com/file/d/1YVvlCWpaOAyIqftaeJUUuFScwsqT-vpY/view?usp=share_link) :heavy_check_mark:
-> [Passo 1]() / [Passo 2]() / [Passo 3]() / [Passo 4]() / [Passo 5]() / [Passo 6]() / [Passo 7]() / [Passo 8]()
+> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/3300f07d49c62c4de510938edf7695c867a9926c) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/896d657d9e8cb4a6c09169d5d647592d6928a8b8) / [Passo 3](https://github.com/SusuGostoso/Susu-POO-I/commit/7c1110d1a2704d2401d7507ea37784b72d0aba78) / [Passo 4](https://github.com/SusuGostoso/Susu-POO-I/commit/717c27d39f962b17c4dd9aa0cfd3dea47f3ea1e4) / [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/197ed883c5552781dde17a91507517c5b312b219) / [Passo 6](https://github.com/SusuGostoso/Susu-POO-I/commit/5f15683e673d6af4828aad9c0a2480331ff18351) / [Passo 7](https://github.com/SusuGostoso/Susu-POO-I/commit/f415dd3ddce752c8b65caf5bdae41cb51802b054) / [Passo 8]()
 

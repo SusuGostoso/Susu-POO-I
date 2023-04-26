@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
-//var dataObjects = [];
+class DataService {
+  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
 
-void carregar(index) {
-  if (index == 1) carregarCervejas();
+  void carregar(index) {
+    if (index == 1) carregarCervejas();
+  }
+
+  void carregarCervejas() {
+    tableStateNotifier.value = [
+      {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
+      {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
+      {"name": "Duvel", "style": "Pilsner", "ibu": "82"}
+    ];
+  }
 }
 
-void carregarCervejas() {
-  tableStateNotifier.value = [
-    {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
-    {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
-    {"name": "Duvel", "style": "Pilsner", "ibu": "82"}
-  ];
-}
+final dataService = DataService();
 
 void main() {
   MyApp app = MyApp();
@@ -34,14 +37,15 @@ class MyApp extends StatelessWidget {
             title: const Text("Dicas"),
           ),
           body: ValueListenableBuilder(
-              valueListenable: tableStateNotifier,
+              valueListenable: dataService.tableStateNotifier,
               builder: (_, value, __) {
                 return DataTableWidget(
                     jsonObjects: value,
                     propertyNames: ["name", "style", "ibu"],
                     columnNames: ["Nome", "Estilo", "IBU"]);
               }),
-          bottomNavigationBar: NewNavBar(itemSelectedCallback: carregar),
+          bottomNavigationBar:
+              NewNavBar(itemSelectedCallback: dataService.carregar),
         ));
   }
 }
