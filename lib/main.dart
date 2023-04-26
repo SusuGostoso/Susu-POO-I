@@ -36,6 +36,12 @@ class NewNavBar extends HookWidget {
     return BottomNavigationBar(
         onTap: (index) {
           state.value = index;
+
+          dataObjects = [
+            {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
+            {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
+            {"name": "Duvel", "style": "Pilsner", "ibu": "82"}
+          ];
         },
         currentIndex: state.value,
         items: const [
