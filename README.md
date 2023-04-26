@@ -41,7 +41,7 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 4/4](https://github.com/SusuGostoso/Susu-POO-I/commit/ddbd6660ed6e4125e0f38ef218d548a2d6e4b730) | [Print :camera:](https://i.ibb.co/RDR79wV/imagem-2023-04-12-213302824.png) | [:computer: Demo Online](https://zapp.run/edit/tarefa-5-exercicio-4-zsc0657sd06)
 
 ### Tarefa 6 [[Montagem de Formulários]](https://drive.google.com/file/d/1DAEEGXV-pCyJ7VrTgEf1XAA_cck0zkrC/view?usp=share_link) :heavy_check_mark:
-> [App Flutter com vários tipos de forms](https://github.com/SusuGostoso/Susu-POO-I/commit/ac2de743f819d55bc1a4db75f9cd3d44368bfcd5) | [:computer: Demo Online](https://zapp.run/edit/flutter-forms-zt006nsu106)
+> [App Flutter com vários tipos de forms](https://github.com/SusuGostoso/Susu-POO-I/commit/2870f2efb5f3ce2c34e3d71e424900907a828af6) | [:computer: Demo Online](https://zapp.run/edit/flutter-forms-zt006nsu106)
 
 ## Unidade :two:
 
@@ -50,3 +50,7 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 
 - [Exercício 1/2](https://github.com/SusuGostoso/Susu-POO-I/commit/837b331b3a90da150e74dcce3e7cb91b2800a773) | [Print :camera:](https://i.ibb.co/NnmBDvr/PRINT-TAREFA-6.png) | [:computer: Demo Online](https://zapp.run/edit/receita-5-exercicio-1-zz9m062ez9n0)
 - [Exercício 2/2](https://github.com/SusuGostoso/Susu-POO-I/commit/11e4239b53e336da505ca60c1ea4b1cd6c511ebb) | [Print :camera:](https://i.ibb.co/27X7L3p/PRINT-TAREFA-6-EXERCICIO-2.png) | [:computer: Demo Online](https://zapp.run/edit/receita-5-exercicio-2-zn9q06k9n9r0)
+
+### Tarefa 2 [[Receita 6]](https://drive.google.com/file/d/1YVvlCWpaOAyIqftaeJUUuFScwsqT-vpY/view?usp=share_link) :heavy_check_mark:
+> [Passo 1]() / [Passo 2]() / [Passo 3]() / [Passo 4]() / [Passo 5]() / [Passo 6]() / [Passo 7]() / [Passo 8]()
+
