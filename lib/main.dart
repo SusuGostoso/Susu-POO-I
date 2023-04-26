@@ -6,14 +6,44 @@ class DataService {
   final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
 
   void carregar(index) {
-    if (index == 1) carregarCervejas();
+    if (index == 0)
+      carregarCafes();
+    else if (index == 1)
+      carregarCervejas();
+    else if (index == 2) carregarNacoes();
   }
 
   void carregarCervejas() {
     tableStateNotifier.value = [
       {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
       {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
-      {"name": "Duvel", "style": "Pilsner", "ibu": "82"}
+      {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
+      {"name": "Guinness Draught", "style": "Stout", "ibu": "45"},
+      {"name": "Chimay Blue", "style": "Belgian Strong Dark Ale", "ibu": "30"}
+    ];
+  }
+
+  void carregarCafes() {
+    tableStateNotifier.value = [
+      {"name": "Café Brasileiro", "style": "Brasil", "ibu": "Médio"},
+      {"name": "Café Colombiano", "style": "Colômbia", "ibu": "Escuro"},
+      {"name": "Café Etíope", "style": "Etiópia", "ibu": "Leve"},
+      {"name": "Café Vietnamita", "style": "Vietnã", "ibu": "Forte"},
+      {"name": "Café Jamaica Blue Mountain", "style": "Jamaica", "ibu": "Suave"}
+    ];
+  }
+
+  void carregarNacoes() {
+    tableStateNotifier.value = [
+      {"name": "Brasil", "style": "América do Sul", "ibu": "210 milhões"},
+      {"name": "Japão", "style": "Ásia", "ibu": "126 milhões"},
+      {"name": "Espanha", "style": "Europa", "ibu": "47 milhões"},
+      {"name": "Nigéria", "style": "África", "ibu": "211 milhões"},
+      {
+        "name": "Estados Unidos",
+        "style": "América do Norte",
+        "ibu": "332 milhões"
+      }
     ];
   }
 }
@@ -64,10 +94,7 @@ class NewNavBar extends HookWidget {
     return BottomNavigationBar(
         onTap: (index) {
           state.value = index;
-
-          itemSelectedCallback(index);
-
-          //carregarCervejas();
+          dataService.carregar(index);
         },
         currentIndex: state.value,
         items: const [
