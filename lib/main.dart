@@ -21,7 +21,14 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text("Dicas"),
           ),
-          body: DataTableWidget(jsonObjects: dataObjects),
+          body: ValueListenableBuilder(
+              valueListenable: twitter,
+              builder: (_, value, __) {
+                return DataTableWidget(
+                    jsonObjects: value,
+                    propertyNames: ["name", "style", "ibu"],
+                    columnNames: ["Nome", "Estilo", "IBU"]);
+              }),
           bottomNavigationBar: NewNavBar(),
         ));
   }
