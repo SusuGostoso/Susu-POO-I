@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class DataService {
-  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
+  static final ValueNotifier<List> tableStateNotifier = ValueNotifier([]);
+
+  final List<Function> _carregarFunctions = [
+    carregarCafes,
+    carregarCervejas,
+    carregarNacoes,
+  ];
 
   void carregar(index) {
-    if (index == 0)
-      carregarCafes();
-    else if (index == 1)
-      carregarCervejas();
-    else if (index == 2) carregarNacoes();
+    _carregarFunctions[index]();
   }
 
-  void carregarCervejas() {
+  static void carregarCervejas() {
     tableStateNotifier.value = [
       {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
       {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
@@ -23,7 +25,7 @@ class DataService {
     ];
   }
 
-  void carregarCafes() {
+  static void carregarCafes() {
     tableStateNotifier.value = [
       {"name": "Café Brasileiro", "style": "Brasil", "ibu": "Médio"},
       {"name": "Café Colombiano", "style": "Colômbia", "ibu": "Escuro"},
@@ -33,7 +35,7 @@ class DataService {
     ];
   }
 
-  void carregarNacoes() {
+  static void carregarNacoes() {
     tableStateNotifier.value = [
       {"name": "Brasil", "style": "América do Sul", "ibu": "210 milhões"},
       {"name": "Japão", "style": "Ásia", "ibu": "126 milhões"},
@@ -67,7 +69,7 @@ class MyApp extends StatelessWidget {
             title: const Text("Dicas"),
           ),
           body: ValueListenableBuilder(
-              valueListenable: dataService.tableStateNotifier,
+              valueListenable: DataService.tableStateNotifier,
               builder: (_, value, __) {
                 return DataTableWidget(
                     jsonObjects: value,
