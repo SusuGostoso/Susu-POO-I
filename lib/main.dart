@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-final ValueNotifier<List> twitter = new ValueNotifier([]);
+final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
 //var dataObjects = [];
+
+void carregarCervejas() {
+  tableStateNotifier.value = [
+    {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
+    {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
+    {"name": "Duvel", "style": "Pilsner", "ibu": "82"}
+  ];
+}
 
 void main() {
   MyApp app = MyApp();
@@ -22,20 +30,25 @@ class MyApp extends StatelessWidget {
             title: const Text("Dicas"),
           ),
           body: ValueListenableBuilder(
-              valueListenable: twitter,
+              valueListenable: tableStateNotifier,
               builder: (_, value, __) {
                 return DataTableWidget(
                     jsonObjects: value,
                     propertyNames: ["name", "style", "ibu"],
                     columnNames: ["Nome", "Estilo", "IBU"]);
               }),
-          bottomNavigationBar: NewNavBar(),
+          bottomNavigationBar:
+              NewNavBar(itemSelectedCallback: carregarCervejas),
         ));
   }
 }
 
 class NewNavBar extends HookWidget {
-  NewNavBar();
+  var itemSelectedCallback; //esse atributo será uma função
+
+  NewNavBar({this.itemSelectedCallback}) {
+    itemSelectedCallback ??= () {};
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +58,9 @@ class NewNavBar extends HookWidget {
         onTap: (index) {
           state.value = index;
 
-          twitter.value = [
-            {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
-            {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
-            {"name": "Duvel", "style": "Pilsner", "ibu": "82"}
-          ];
+          itemSelectedCallback();
+
+          //carregarCervejas();
         },
         currentIndex: state.value,
         items: const [
