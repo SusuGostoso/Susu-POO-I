@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-var dataObjects = [];
+final ValueNotifier<List> twitter = new ValueNotifier([]);
+//var dataObjects = [];
 
 void main() {
   MyApp app = MyApp();
