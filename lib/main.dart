@@ -5,79 +5,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class DataService {
   static final ValueNotifier<List> tableStateNotifier = ValueNotifier([]);
 
-  static List<String> cafeColumnNames = [
-    "ID",
-    "UID",
-    "Blend",
-    "Origem",
-    "Variedade",
-    "Notas",
-    "Intensidade"
-  ];
-  static List<String> cafePropertyNames = [
-    "id",
-    "uid",
-    "blend_name",
-    "origin",
-    "variety",
-    "notes",
-    "intensifier"
-  ];
-
-  static List<String> cervejaColumnNames = [
-    "ID",
-    "UID",
-    "brand",
-    "Nome",
-    "Estilo",
-    "hop",
-    "Fermentada",
-    "Malte",
-    "ibu",
-    "alcohol",
-    "blg"
-  ];
-  static List<String> cervejaPropertyNames = [
-    "id",
-    "uid",
-    "brand",
-    "name",
-    "style",
-    "hop",
-    "yeast",
-    "malts",
-    "ibu",
-    "alcohol",
-    "blg"
-  ];
-
-  static List<String> nacaoColumnNames = [
-    "ID",
-    "UID",
-    "Nacionalidade",
-    "Idioma",
-    "Capital",
-    "Esporte nacional",
-    "Bandeira"
-  ];
-  static List<String> nacaoPropertyNames = [
-    "id",
-    "uid",
-    "nationality",
-    "idioma",
-    "capital",
-    "esporte_nacional",
-    "bandeira"
-  ];
-
   final List<Function> _carregarFunctions = [
     carregarCafes,
     carregarCervejas,
     carregarNacoes,
   ];
 
-  static List<String> columnNames = ["Nome", "Estilo", "IBU"];
-  static List<String> propertyNames = ["name", "style", "ibu"];
+  static List<String> columnNames = [];
+  static List<String> propertyNames = [];
 
   void carregar(index) {
     _carregarFunctions[index]();
@@ -151,8 +86,32 @@ class DataService {
         "blg": "14.7°Blg"
       }
     ];
-    DataService.columnNames = DataService.cervejaColumnNames;
-    DataService.propertyNames = DataService.cervejaPropertyNames;
+    DataService.columnNames = [
+      "ID",
+      "UID",
+      "brand",
+      "Nome",
+      "Estilo",
+      "hop",
+      "Fermentada",
+      "Malte",
+      "ibu",
+      "alcohol",
+      "blg"
+    ];
+    DataService.propertyNames = [
+      "id",
+      "uid",
+      "brand",
+      "name",
+      "style",
+      "hop",
+      "yeast",
+      "malts",
+      "ibu",
+      "alcohol",
+      "blg"
+    ];
   }
 
   static void carregarCafes() {
@@ -203,8 +162,24 @@ class DataService {
         "intensifier": "seco"
       }
     ];
-    DataService.columnNames = DataService.cafeColumnNames;
-    DataService.propertyNames = DataService.cafePropertyNames;
+    DataService.columnNames = [
+      "ID",
+      "UID",
+      "Blend",
+      "Origem",
+      "Variedade",
+      "Notas",
+      "Intensidade"
+    ];
+    DataService.propertyNames = [
+      "id",
+      "uid",
+      "blend_name",
+      "origin",
+      "variety",
+      "notes",
+      "intensifier"
+    ];
   }
 
   static void carregarNacoes() {
@@ -255,8 +230,24 @@ class DataService {
         "bandeira": "🇸🇯"
       }
     ];
-    DataService.columnNames = DataService.nacaoColumnNames;
-    DataService.propertyNames = DataService.nacaoPropertyNames;
+    DataService.columnNames = [
+      "ID",
+      "UID",
+      "Nacionalidade",
+      "Idioma",
+      "Capital",
+      "Esporte nacional",
+      "Bandeira"
+    ];
+    DataService.propertyNames = [
+      "id",
+      "uid",
+      "nationality",
+      "idioma",
+      "capital",
+      "esporte_nacional",
+      "bandeira"
+    ];
   }
 }
 
@@ -280,10 +271,12 @@ class MyApp extends StatelessWidget {
             title: const Text("Dicas"),
           ),
           body: Container(
-            width: 2000, //double.infinity
-            margin: const EdgeInsets.symmetric(horizontal: 10.0),
+            width:
+                2000, //coloquei 2000 pra ver se aparecia o scroll horizontal    -double.infinity
+            margin: const EdgeInsets.symmetric(horizontal: 10.0), //Margem
             child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
+              //Scroll
+              scrollDirection: Axis.horizontal, //scroll setado como horizontal
               child: ValueListenableBuilder(
                   valueListenable: DataService.tableStateNotifier,
                   builder: (_, value, __) {
