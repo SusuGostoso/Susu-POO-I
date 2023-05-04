@@ -60,8 +60,7 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 
 
 ### Tarefa 3 [[Receita 7]](https://drive.google.com/file/d/1bYy0lfz6KLndee0t8IOCG033Nh37Weu3/view?usp=share_link) :heavy_check_mark:
-> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/43870a9257446a64aa05fea49de505c5750a29ac) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/15e04b2160eda2855e5793224059b8e95a88db9a) / [Passo 3](https://github.com/SusuGostoso/Susu-POO-I/commit/79e17db1256c142d39f29d49ab7563a8ae432477) / [Passo 4]() / [Passo 5]()
+> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/43870a9257446a64aa05fea49de505c5750a29ac) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/15e04b2160eda2855e5793224059b8e95a88db9a) / [Passo 3](https://github.com/SusuGostoso/Susu-POO-I/commit/79e17db1256c142d39f29d49ab7563a8ae432477) / [Passo 4](https://github.com/SusuGostoso/Susu-POO-I/commit/2563cf04fc54e249d89073615817d153089cc90e) / [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/e90911e3f684553d470fa54a681a8f49791ff90d)
 
-- [Exercício 1/3]() | [:computer: Demo Online]()
-- [Exercício 2/3]() | [:computer: Demo Online]()
-- [Exercício 3/3]() | [:computer: Demo Online]()
+- [Exercício 1/2]() | [:computer: Demo Online](https://zapp.run/edit/receita-7-exercicio-1-zf1c06q4f1d0)
+- [Exercício 2/2]() | [:computer: Demo Online]()
