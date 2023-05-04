@@ -12,22 +12,19 @@ class DataService {
     carregarNacoes,
   ];
 
-  int selecionado = 1;
-
   static List<String> columnNames = [];
   static List<String> propertyNames = [];
 
-  void carregar(index, {String size = '5'}) {
-    _carregarFunctions[index](size: size);
-    selecionado = index;
+  void carregar(index) {
+    _carregarFunctions[index]();
   }
 
-  static Future<void> carregarCervejas({String size = '5'}) async {
+  static Future<void> carregarCervejas() async {
     var cervejaUri = Uri(
         scheme: 'https',
         host: 'random-data-api.com',
         path: 'api/beer/random_beer',
-        queryParameters: {'size': size});
+        queryParameters: {'size': '5'});
 
     var jsonString = await http.read(cervejaUri);
     var cervejaJson = jsonDecode(jsonString) as List<dynamic>;
@@ -65,12 +62,12 @@ class DataService {
     ];
   }
 
-  static Future<void> carregarCafes({String size = '5'}) async {
+  static Future<void> carregarCafes() async {
     var cafeUri = Uri(
         scheme: 'https',
         host: 'random-data-api.com',
         path: 'api/coffee/random_coffee',
-        queryParameters: {'size': size});
+        queryParameters: {'size': '5'});
 
     var jsonString = await http.read(cafeUri);
     var cafeJson = jsonDecode(jsonString) as List<dynamic>;
@@ -100,12 +97,12 @@ class DataService {
     ];
   }
 
-  static Future<void> carregarNacoes({String size = '5'}) async {
+  static Future<void> carregarNacoes() async {
     var nacoesUri = Uri(
         scheme: 'https',
         host: 'random-data-api.com',
         path: 'api/nation/random_nation',
-        queryParameters: {'size': size});
+        queryParameters: {'size': '5'});
 
     var jsonString = await http.read(nacoesUri);
     var nacoesJson = jsonDecode(jsonString) as List<dynamic>;
@@ -154,15 +151,11 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           appBar: AppBar(
             title: const Text("Dicas"),
-            actions: const [
-              TamanhoDropdown(),
-            ],
           ),
           body: Container(
             width:
                 2000, //coloquei 2000 pra ver se aparecia o scroll horizontal    -double.infinity
             margin: const EdgeInsets.symmetric(horizontal: 10.0), //Margem
-
             child: SingleChildScrollView(
               //Scroll
               scrollDirection: Axis.horizontal, //scroll setado como horizontal
@@ -194,68 +187,21 @@ class NewNavBar extends HookWidget {
     var state = useState(1);
 
     return BottomNavigationBar(
-      onTap: (index) {
-        state.value = index;
-        dataService.carregar(index);
-      },
-      currentIndex: state.value,
-      items: const [
-        BottomNavigationBarItem(
+        onTap: (index) {
+          state.value = index;
+          dataService.carregar(index);
+        },
+        currentIndex: state.value,
+        items: const [
+          BottomNavigationBarItem(
             label: "Cafés",
             icon: Icon(Icons.coffee_outlined),
-            activeIcon: Icon(Icons.coffee)),
-        BottomNavigationBarItem(
-            label: "Cervejas",
-            icon: Icon(Icons.local_drink_outlined),
-            activeIcon: Icon(Icons.local_drink)),
-        BottomNavigationBarItem(
-            label: "Nações",
-            icon: Icon(Icons.flag_outlined),
-            activeIcon: Icon(Icons.flag)),
-      ],
-
-      backgroundColor: Colors.deepPurple,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white.withOpacity(0.6),
-      type: BottomNavigationBarType.fixed,
-      elevation: 5,
-      selectedFontSize: 18,
-      unselectedFontSize: 14,
-      // Nova opção de tamanho para selecionar a quantidade a ser carregada
-    );
-  }
-}
-
-class TamanhoDropdown extends StatefulWidget {
-  const TamanhoDropdown({Key? key}) : super(key: key);
-
-  @override
-  _TamanhoDropdownState createState() => _TamanhoDropdownState();
-}
-
-class _TamanhoDropdownState extends State<TamanhoDropdown> {
-  String _tamanhoSelecionado = "5"; // valor padrão selecionado
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: _tamanhoSelecionado,
-      items: <String>["5", "10", "15"].map((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-      onChanged: (String? newValue) {
-        if (newValue != null) {
-          setState(() {
-            _tamanhoSelecionado = newValue;
-          });
-          dataService.carregar(dataService.selecionado,
-              size: _tamanhoSelecionado);
-        }
-      },
-    );
+          ),
+          BottomNavigationBarItem(
+              label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
+          BottomNavigationBarItem(
+              label: "Nações", icon: Icon(Icons.flag_outlined))
+        ]);
   }
 }
 
