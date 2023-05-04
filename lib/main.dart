@@ -7,33 +7,31 @@ class DataService {
   final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
 
   void carregar(index) {
-    if (index == 1) carregarCervejas();
+    var res = null;
+
+    print('carregar #1 - antes de carregarCervejas');
+
+    if (index == 1) res = carregarCervejas();
+
+    print('carregar #2 - carregarCervejas retornou $res');
   }
 
-  void carregarCervejas(){
-
-
-
+  Future<void> carregarCervejas() async {
     var beersUri = Uri(
+        scheme: 'https',
+        host: 'random-data-api.com',
+        path: 'api/beer/random_beer',
+        queryParameters: {'size': '5'});
 
-      scheme: 'https',
-
-      host: 'random-data-api.com',
-
-      path: 'api/beer/random_beer',
-
-      queryParameters: {'size': '5'});
-
-  
+    print('carregarCervejas #1 - antes do await');
 
     var jsonString = await http.read(beersUri);
 
+    print('carregarCervejas #2 - depois do await');
+
     var beersJson = jsonDecode(jsonString);
 
-
-
     tableStateNotifier.value = beersJson;
-
   }
 }
 
