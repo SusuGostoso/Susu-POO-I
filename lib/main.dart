@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'dart:convert';
 
 class DataService {
   final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
@@ -10,11 +11,21 @@ class DataService {
   }
 
   void carregarCervejas() {
-    tableStateNotifier.value = [
-      {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
-      {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
-      {"name": "Duvel", "style": "Pilsner", "ibu": "82"}
-    ];
+    //1
+    var beersUri = Uri(
+        scheme: 'https',
+        host: 'random-data-api.com',
+        path: 'api/beer/random_beer',
+        queryParameters: {'size': '5'});
+
+    //2
+    var jsonString = http.read(beersUri);
+
+    //3
+    var beersJson = jsonDecode(jsonString);
+
+    //4
+    tableStateNotifier.value = beersJson;
   }
 }
 
