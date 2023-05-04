@@ -10,22 +10,30 @@ class DataService {
     if (index == 1) carregarCervejas();
   }
 
-  void carregarCervejas() {
-    //1
+  void carregarCervejas(){
+
+
+
     var beersUri = Uri(
-        scheme: 'https',
-        host: 'random-data-api.com',
-        path: 'api/beer/random_beer',
-        queryParameters: {'size': '5'});
 
-    //2
-    var jsonString = http.read(beersUri);
+      scheme: 'https',
 
-    //3
+      host: 'random-data-api.com',
+
+      path: 'api/beer/random_beer',
+
+      queryParameters: {'size': '5'});
+
+  
+
+    var jsonString = await http.read(beersUri);
+
     var beersJson = jsonDecode(jsonString);
 
-    //4
+
+
     tableStateNotifier.value = beersJson;
+
   }
 }
 
