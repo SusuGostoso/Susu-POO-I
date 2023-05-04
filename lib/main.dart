@@ -23,10 +23,11 @@ class DataService {
         path: 'api/beer/random_beer',
         queryParameters: {'size': '5'});
 
+    //Debug 1
     print('carregarCervejas #1 - antes do await');
-
     var jsonString = await http.read(beersUri);
 
+    //Debug 2
     print('carregarCervejas #2 - depois do await');
 
     var beersJson = jsonDecode(jsonString);
