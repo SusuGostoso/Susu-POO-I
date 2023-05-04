@@ -57,3 +57,11 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 1/3](https://github.com/SusuGostoso/Susu-POO-I/commit/8f6266f807c4ef3f80f925b784633cd12bbc9fc0) | [:computer: Demo Online](https://zapp.run/edit/receita-6-exercicio-1-zsb806pzsb90)
 - [Exercício 2/3](https://github.com/SusuGostoso/Susu-POO-I/commit/bbc92817072f754acbdaf204ce346ce6b3927579) | [:computer: Demo Online](https://zapp.run/edit/receita-6-exercicio-2-z7ba06dh7bb0)
 - [Exercício 3/3](https://github.com/SusuGostoso/Susu-POO-I/commit/3fef5af4c7d6aa170700cecfcdbc1a4de70f1a24) | [:computer: Demo Online](https://zapp.run/edit/receita-6-exercicio-3-z27a06uj37b0)
+
+
+### Tarefa 3 [[Receita 7]](https://drive.google.com/file/d/1bYy0lfz6KLndee0t8IOCG033Nh37Weu3/view?usp=share_link) :heavy_check_mark:
+> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/43870a9257446a64aa05fea49de505c5750a29ac) / [Passo 2]() / [Passo 3]() / [Passo 4]() / [Passo 5]()
+
+- [Exercício 1/3]() | [:computer: Demo Online]()
+- [Exercício 2/3]() | [:computer: Demo Online]()
+- [Exercício 3/3]() | [:computer: Demo Online]()
