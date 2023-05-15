@@ -15,6 +15,11 @@ class DataService {
   void carregar(index) {
     final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
 
+    tableStateNotifier.value = {
+      'status': TableStatus.loading,
+      'dataObjects': []
+    };
+
     funcoes[index]();
   }
 
