@@ -43,7 +43,8 @@ class DataService {
 
       tableStateNotifier.value = {
         'status': TableStatus.ready,
-        'dataObjects': beersJson
+        'dataObjects': beersJson,
+        'propertyNames': ["name", "style", "ibu"]
       };
     });
   }
@@ -80,7 +81,7 @@ class MyApp extends StatelessWidget {
                   case TableStatus.ready:
                     return DataTableWidget(
                         jsonObjects: value['dataObjects'],
-                        propertyNames: ["name", "style", "ibu"],
+                        propertyNames: value['propertyNames'],
                         columnNames: ["Nome", "Estilo", "IBU"]);
 
                   case TableStatus.error:
