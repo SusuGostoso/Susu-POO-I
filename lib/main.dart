@@ -6,8 +6,11 @@ import 'package:http/http.dart' as http;
 
 import 'dart:convert';
 
+enum TableStatus { idle, loading, ready, error }
+
 class DataService {
-  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
+  final ValueNotifier<Map<String, dynamic>> tableStateNotifier =
+      ValueNotifier({'status': TableStatus.idle, 'dataObjects': []});
 
   void carregar(index) {
     final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
@@ -60,7 +63,7 @@ class MyApp extends StatelessWidget {
               valueListenable: dataService.tableStateNotifier,
               builder: (_, value, __) {
                 return DataTableWidget(
-                    jsonObjects: value,
+                    jsonObjects: value['dataObjects'],
                     propertyNames: ["name", "style", "ibu"],
                     columnNames: ["Nome", "Estilo", "IBU"]);
               }),
