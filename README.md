@@ -60,7 +60,7 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 
 
 ### Tarefa 3 [[Receita 7]](https://drive.google.com/file/d/1bYy0lfz6KLndee0t8IOCG033Nh37Weu3/view?usp=share_link) :heavy_check_mark:
-> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/53d715693f16045145da6ff11bf8d622257cc505) / [Passo 2]() / [Passo 3]() / [Passo 4]() / [Passo 5]() / [Passo 6]() / [Passo 7]() / [Passo 8]()
+> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/53d715693f16045145da6ff11bf8d622257cc505) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/9cd7632be665f29b6ffa29bbc4f6804a1b46840b) / [Passos 3-4](https://github.com/SusuGostoso/Susu-POO-I/commit/9f11f0fde83fbf557c36a012a6b7509b7e850ac8) /  [Passo 5]() / [Passo 6]() / [Passo 7]() / [Passo 8]()
 
 - [Exercício 1/8]() | [:computer: Demo Online]()
 - [Exercício 2/8]() | [:computer: Demo Online]()

@@ -36,7 +36,10 @@ class DataService {
     http.read(beersUri).then((jsonString) {
       var beersJson = jsonDecode(jsonString);
 
-      tableStateNotifier.value = beersJson;
+      tableStateNotifier.value = {
+        'status': TableStatus.ready,
+        'dataObjects': beersJson
+      };
     });
   }
 }
