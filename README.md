@@ -60,7 +60,13 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 
 
 ### Tarefa 3 [[Receita 7]](https://drive.google.com/file/d/1bYy0lfz6KLndee0t8IOCG033Nh37Weu3/view?usp=share_link) :heavy_check_mark:
-> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/53d715693f16045145da6ff11bf8d622257cc505) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/9cd7632be665f29b6ffa29bbc4f6804a1b46840b) / [Passos 3-4](https://github.com/SusuGostoso/Susu-POO-I/commit/9f11f0fde83fbf557c36a012a6b7509b7e850ac8) /  [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/e153b3aedfbbd21b5c6e91b0d7e5d730a683c27e) / [Passo 6](https://github.com/SusuGostoso/Susu-POO-I/commit/65ad705d93eafb4b6c4c966041ef6667653f4f67) / [Passo 7](https://github.com/SusuGostoso/Susu-POO-I/commit/073232c854d3ee3ff5e802bd6defff4497719d73) / [Passo 8]()
+> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/43870a9257446a64aa05fea49de505c5750a29ac) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/15e04b2160eda2855e5793224059b8e95a88db9a) / [Passo 3](https://github.com/SusuGostoso/Susu-POO-I/commit/79e17db1256c142d39f29d49ab7563a8ae432477) / [Passo 4](https://github.com/SusuGostoso/Susu-POO-I/commit/2563cf04fc54e249d89073615817d153089cc90e) / [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/e90911e3f684553d470fa54a681a8f49791ff90d)
+
+- [Exercício 1/2](https://github.com/SusuGostoso/Susu-POO-I/commit/5b798a96cdc24382ddb0358e4da01cbaa03bf47b) | [:computer: Demo Online](https://zapp.run/edit/receita-7-exercicio-1-zf1c06q4f1d0)
+- [Exercício 2/2](https://github.com/SusuGostoso/Susu-POO-I/commit/d5e1b2acd0685c5d615e72b8f2aab0c967129e6c) | [:computer: Demo Online](https://zapp.run/edit/receita-7-exercicio-2-za1s0637a1t0)
+
+### Tarefa 4 [[Receita 8]](https://drive.google.com/file/d/1OJnDMTYF0Ua1CHgfpi-0GvTjrt3aAKlF/view?usp=share_link) :heavy_check_mark:
+> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/53d715693f16045145da6ff11bf8d622257cc505) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/9cd7632be665f29b6ffa29bbc4f6804a1b46840b) / [Passos 3-4](https://github.com/SusuGostoso/Susu-POO-I/commit/9f11f0fde83fbf557c36a012a6b7509b7e850ac8) /  [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/e153b3aedfbbd21b5c6e91b0d7e5d730a683c27e) / [Passo 6](https://github.com/SusuGostoso/Susu-POO-I/commit/65ad705d93eafb4b6c4c966041ef6667653f4f67) / [Passo 7](https://github.com/SusuGostoso/Susu-POO-I/commit/073232c854d3ee3ff5e802bd6defff4497719d73) / [Passo 8](https://github.com/SusuGostoso/Susu-POO-I/commit/116125d724866a5918c6dd3d40248988746a7682)
 
 - [Exercício 1/8]() | [:computer: Demo Online]()
 - [Exercício 2/8]() | [:computer: Demo Online]()
