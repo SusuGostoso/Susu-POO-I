@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_hooks/flutter_hooks.dart';
+
 import 'package:http/http.dart' as http;
+
 import 'dart:convert';
 
 enum TableStatus { idle, loading, ready, error }
@@ -42,13 +45,6 @@ class DataService {
         'propertyNames': ["blend_name", "origin", "variety", "notes"],
         'columnNames': ["Blend", "Origem", "Variedade", "Notas"]
       };
-    }).catchError((e) {
-      tableStateNotifier.value = {
-        'status': TableStatus.error,
-        'dataObjects': [],
-        'propertyNames': [],
-        'columnNames': [],
-      };
     });
   }
 
@@ -60,14 +56,7 @@ class DataService {
         path: 'api/nation/random_nation',
         queryParameters: {'size': '5'});
 
-    var jsonString = await http.read(nationUri).catchError((e) {
-      tableStateNotifier.value = {
-        'status': TableStatus.error,
-        'dataObjects': [],
-        'propertyNames': [],
-        'columnNames': [],
-      };
-    });
+    var jsonString = await http.read(nationUri);
 
     var nationJson = jsonDecode(jsonString);
 
@@ -114,13 +103,6 @@ class DataService {
         'dataObjects': beersJson,
         'propertyNames': ["name", "style", "ibu"],
         'columnNames': ["Nome", "Estilo", "IBU"]
-      };
-    }).catchError((e) {
-      tableStateNotifier.value = {
-        'status': TableStatus.error,
-        'dataObjects': [],
-        'propertyNames': [],
-        'columnNames': []
       };
     });
   }
@@ -194,26 +176,7 @@ class MyApp extends StatelessWidget {
                         columnNames: value['columnNames']);
 
                   case TableStatus.error:
-                    return const Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.warning_amber_outlined,
-                              size: 100, color: Colors.red),
-                          Text(
-                            "De novo sem net na UFRN? Triste.",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            "Verifique sua conexão e tente novamente",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    );
+                    return Text("Lascou");
                 }
 
                 return Text("...");
