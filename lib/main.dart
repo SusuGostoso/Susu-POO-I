@@ -146,7 +146,7 @@ class MyApp extends StatelessWidget {
                     );
 
                   case TableStatus.loading:
-                    return CircularProgressIndicator();
+                    return Center(child: CircularProgressIndicator());
 
                   case TableStatus.ready:
                     return DataTableWidget(
