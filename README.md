@@ -69,8 +69,8 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 > [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/53d715693f16045145da6ff11bf8d622257cc505) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/9cd7632be665f29b6ffa29bbc4f6804a1b46840b) / [Passos 3-4](https://github.com/SusuGostoso/Susu-POO-I/commit/9f11f0fde83fbf557c36a012a6b7509b7e850ac8) /  [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/e153b3aedfbbd21b5c6e91b0d7e5d730a683c27e) / [Passo 6](https://github.com/SusuGostoso/Susu-POO-I/commit/65ad705d93eafb4b6c4c966041ef6667653f4f67) / [Passo 7](https://github.com/SusuGostoso/Susu-POO-I/commit/073232c854d3ee3ff5e802bd6defff4497719d73) / [Passo 8](https://github.com/SusuGostoso/Susu-POO-I/commit/116125d724866a5918c6dd3d40248988746a7682)
 
 - [Exercício 1/8 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/fbce61a7289dab1ba01ab578f216ab277d19fdd0) | [:computer: Demo Online](https://zapp.run/edit/receita-8-exercicio-1-zz6206ucz630)
-- [Exercício 2/8 :x:]() | [:computer: Demo Online]()
-- [Exercício 3/8 :x:]() | [:computer: Demo Online]()
+- [Exercício 2/8 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/ab9faa3f268662569241fad786f251683ebf4905)
+- [Exercício 3/8 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/b3135b247ba81a536e617339c6d2bc48d7db1f2d) | [:computer: Demo Online](https://zapp.run/edit/receita-8-exercicio-3-zb5g06zyb5h0?entry=lib/main.dart&file=pubspec.yaml)
 - [Exercício 4/8 :x:]() | [:computer: Demo Online]()
 - [Exercício 5/8 :x:]() | [:computer: Demo Online]()
 - [Exercício 6/8 :x:]() | [:computer: Demo Online]()

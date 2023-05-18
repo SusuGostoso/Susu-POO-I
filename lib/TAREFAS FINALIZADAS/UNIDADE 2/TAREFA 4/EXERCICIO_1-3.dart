@@ -48,27 +48,6 @@ class DataService {
     });
   }
 
-  //MÉTODO ASYNC/WAIT
-  Future<void> carregarNacoes() async {
-    var nationUri = Uri(
-        scheme: 'https',
-        host: 'random-data-api.com',
-        path: 'api/nation/random_nation',
-        queryParameters: {'size': '5'});
-
-    var jsonString = await http.read(nationUri);
-
-    var nationJson = jsonDecode(jsonString);
-
-    tableStateNotifier.value = {
-      'status': TableStatus.ready,
-      'dataObjects': nationJson,
-      'propertyNames': ["nationality", "language", "capital", "flag"],
-      'columnNames': ["Nacionalidade", "Lingua", "Capital", "Bandeira"]
-    };
-  }
-
-  /* MÉTODO THEN
   void carregarNacoes() {
     var nationUri = Uri(
         scheme: 'https',
@@ -86,7 +65,7 @@ class DataService {
         'columnNames': ["Nacionalidade", "Lingua", "Capital", "Bandeira"]
       };
     });
-  }*/
+  }
 
   void carregarCervejas() {
     var beersUri = Uri(
