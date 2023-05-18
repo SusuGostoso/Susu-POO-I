@@ -14,7 +14,12 @@ class DataService {
   });
 
   void carregar(index) {
-    final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
+    final funcoes = [
+      carregarCafes,
+      carregarCervejas,
+      carregarNacoes,
+      carregarSangue
+    ];
 
     tableStateNotifier.value = {
       'status': TableStatus.loading,
@@ -41,6 +46,32 @@ class DataService {
         'dataObjects': coffeJson,
         'propertyNames': ["blend_name", "origin", "variety", "notes"],
         'columnNames': ["Blend", "Origem", "Variedade", "Notas"]
+      };
+    }).catchError((e) {
+      tableStateNotifier.value = {
+        'status': TableStatus.error,
+        'dataObjects': [],
+        'propertyNames': [],
+        'columnNames': [],
+      };
+    });
+  }
+
+  void carregarSangue() {
+    var bloodUri = Uri(
+        scheme: 'https',
+        host: 'random-data-api.com',
+        path: 'api/blood/random_blood',
+        queryParameters: {'size': '5'});
+
+    http.read(bloodUri).then((jsonString) {
+      var bloodJson = jsonDecode(jsonString);
+
+      tableStateNotifier.value = {
+        'status': TableStatus.ready,
+        'dataObjects': bloodJson,
+        'propertyNames': ["type", "rh_factor", "group"],
+        'columnNames': ["Tipo sanguíneo", "Fator RH", "Grupo"]
       };
     }).catchError((e) {
       tableStateNotifier.value = {
@@ -235,6 +266,7 @@ class NewNavBar extends HookWidget {
     var state = useState(1);
 
     return BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: (index) {
           state.value = index;
 
@@ -249,7 +281,9 @@ class NewNavBar extends HookWidget {
           BottomNavigationBarItem(
               label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
           BottomNavigationBarItem(
-              label: "Nações", icon: Icon(Icons.flag_outlined))
+              label: "Nações", icon: Icon(Icons.flag_outlined)),
+          BottomNavigationBarItem(
+              label: "Sangue", icon: Icon(Icons.bloodtype_outlined))
         ]);
   }
 }
