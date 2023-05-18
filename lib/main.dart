@@ -9,26 +9,62 @@ import 'dart:convert';
 enum TableStatus { idle, loading, ready, error }
 
 class DataService {
-  final ValueNotifier<Map<String, dynamic>> tableStateNotifier =
-      ValueNotifier({'status': TableStatus.idle, 'dataObjects': []});
+  final ValueNotifier<Map<String, dynamic>> tableStateNotifier = ValueNotifier({
+    'status': TableStatus.idle,
+    'dataObjects': [],
+    'columnNames': [],
+    'propertyNames': []
+  });
 
   void carregar(index) {
     final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
 
     tableStateNotifier.value = {
       'status': TableStatus.loading,
-      'dataObjects': []
+      'dataObjects': [],
+      'columnNames': [],
+      'propertyNames': []
     };
 
     funcoes[index]();
   }
 
   void carregarCafes() {
-    return;
+    var coffeUri = Uri(
+        scheme: 'https',
+        host: 'random-data-api.com',
+        path: 'api/coffee/random_coffee',
+        queryParameters: {'size': '5'});
+
+    http.read(coffeUri).then((jsonString) {
+      var coffeJson = jsonDecode(jsonString);
+
+      tableStateNotifier.value = {
+        'status': TableStatus.ready,
+        'dataObjects': coffeJson,
+        'propertyNames': ["blend_name", "origin", "variety", "notes"],
+        'columnNames': ["Blend", "Origem", "Variedade", "Notas"]
+      };
+    });
   }
 
   void carregarNacoes() {
-    return;
+    var nationUri = Uri(
+        scheme: 'https',
+        host: 'random-data-api.com',
+        path: 'api/nation/random_nation',
+        queryParameters: {'size': '5'});
+
+    http.read(nationUri).then((jsonString) {
+      var nationJson = jsonDecode(jsonString);
+
+      tableStateNotifier.value = {
+        'status': TableStatus.ready,
+        'dataObjects': nationJson,
+        'propertyNames': ["nationality", "language", "capital", "flag"],
+        'columnNames': ["Nacionalidade", "Lingua", "Capital", "Bandeira"]
+      };
+    });
   }
 
   void carregarCervejas() {
@@ -44,7 +80,8 @@ class DataService {
       tableStateNotifier.value = {
         'status': TableStatus.ready,
         'dataObjects': beersJson,
-        'propertyNames': ["name", "style", "ibu"]
+        'propertyNames': ["name", "style", "ibu"],
+        'columnNames': ["Nome", "Estilo", "IBU"]
       };
     });
   }
@@ -82,7 +119,7 @@ class MyApp extends StatelessWidget {
                     return DataTableWidget(
                         jsonObjects: value['dataObjects'],
                         propertyNames: value['propertyNames'],
-                        columnNames: ["Nome", "Estilo", "IBU"]);
+                        columnNames: value['columnNames']);
 
                   case TableStatus.error:
                     return Text("Lascou");
@@ -133,10 +170,11 @@ class DataTableWidget extends StatelessWidget {
 
   final List<String> propertyNames;
 
-  DataTableWidget(
-      {this.jsonObjects = const [],
-      this.columnNames = const ["Nome", "Estilo", "IBU"],
-      this.propertyNames = const ["name", "style", "ibu"]});
+  DataTableWidget({
+    this.jsonObjects = const [],
+    this.columnNames = const [],
+    this.propertyNames = const ["name", "style", "ibu"],
+  });
 
   @override
   Widget build(BuildContext context) {
