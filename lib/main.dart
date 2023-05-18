@@ -23,7 +23,7 @@ class DataService {
       'status': TableStatus.loading,
       'dataObjects': [],
       'columnNames': [],
-      'propertyNames': []
+      'propertyNames': [],
     };
 
     funcoes[index]();
@@ -103,14 +103,47 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("Dicas"),
+            title: const Text("The Love Wins"),
           ),
           body: ValueListenableBuilder(
               valueListenable: dataService.tableStateNotifier,
               builder: (_, value, __) {
                 switch (value['status']) {
                   case TableStatus.idle:
-                    return Text("Toque algum botão");
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('images/amor.png', // Caminho da imagem
+                            width: 200,
+                            height: 200),
+                        SizedBox(height: 16),
+                        Center(
+                          child: Text(
+                            "Seja bem vindo ao aplicativo do amor!",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepPurple,
+                              fontStyle: FontStyle.normal,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        Center(
+                          child: Text(
+                            "Ao apertar nos botões abaixo, você obtém informações\n diretamente de uma api da internet.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
 
                   case TableStatus.loading:
                     return CircularProgressIndicator();
