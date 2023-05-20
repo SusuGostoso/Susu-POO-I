@@ -35,6 +35,8 @@ class DataService {
     };
 
     funcoes[index]();
+
+    sortTable(1);
   }
 
   void carregarCafes() {
@@ -168,6 +170,9 @@ class DataService {
       newSortOrder = currentSortOrder == SortOrder.ascending
           ? SortOrder.descending
           : SortOrder.ascending;
+    } else {
+      // Se o índice da coluna for diferente, definimos a ordem de classificação como ascendente
+      newSortOrder = SortOrder.ascending;
     }
 
     var sortedDataObjects = List.from(currentValue['dataObjects']);
@@ -176,13 +181,13 @@ class DataService {
       var bValue = b[currentValue['propertyNames'][columnIndex]];
 
       if (aValue is String && bValue is String) {
-        return currentValue['sortOrder'] == SortOrder.ascending
+        return newSortOrder == SortOrder.ascending
             ? aValue.compareTo(bValue)
             : bValue.compareTo(aValue);
       }
 
       if (aValue is num && bValue is num) {
-        return currentValue['sortOrder'] == SortOrder.ascending
+        return newSortOrder == SortOrder.ascending
             ? aValue.compareTo(bValue)
             : bValue.compareTo(aValue);
       }
@@ -339,18 +344,22 @@ class DataTableWidget extends StatelessWidget {
   final List<String> columnNames;
   final List<String> propertyNames;
   final Function(int) onSort;
+  final int initialSortColumnIndex;
+
+  int sortColumnIndex = -1;
 
   DataTableWidget({
     this.jsonObjects = const [],
     this.columnNames = const [],
     this.propertyNames = const ["name", "age", "gender"],
     required this.onSort,
-  });
+    this.initialSortColumnIndex = -1,
+  }) : sortColumnIndex = initialSortColumnIndex;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.vertical,
       child: DataTable(
         columns: _buildColumns(columnNames),
         rows: _buildRows(jsonObjects, propertyNames),
@@ -365,8 +374,15 @@ class DataTableWidget extends StatelessWidget {
         .map((entry) => DataColumn(
               label: Text(entry.value),
               onSort: onSort != null
-                  ? (index, ascending) => onSort(entry.key)
+                  ? (index, ascending) {
+                      if (sortColumnIndex != index) {
+                        sortColumnIndex = index;
+                      }
+                      onSort(entry.key);
+                    }
                   : null,
+              numeric: entry.key == sortColumnIndex,
+              // Adicione a propriedade "numeric" para destacar a coluna atualmente ordenada
             ))
         .toList();
   }
