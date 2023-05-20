@@ -179,7 +179,7 @@ class ListWidget extends HookWidget {
         if (controller.position.pixels == controller.position.maxScrollExtent)
           print('end of scroll');
       });
-    }, [controller]);
+    }, []);
 
     return ListView.separated(
       controller: controller,
@@ -191,8 +191,11 @@ class ListWidget extends HookWidget {
         endIndent: 10,
         color: Theme.of(context).primaryColor,
       ),
-      itemCount: jsonObjects.length,
+      itemCount: jsonObjects.length + 1,
       itemBuilder: (_, index) {
+        if (index == jsonObjects.length)
+          return Center(child: LinearProgressIndicator());
+
         var title = jsonObjects[index][propertyNames[0]];
 
         var content = propertyNames
