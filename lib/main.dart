@@ -162,24 +162,34 @@ class NewNavBar extends HookWidget {
 }
 
 class ListWidget extends HookWidget {
+  final dynamic _scrollEndedCallback;
+
   final List jsonObjects;
 
   final List<String> propertyNames;
 
   ListWidget(
       {this.jsonObjects = const [],
-      this.propertyNames = const ["name", "style", "ibu"]});
+      this.propertyNames = const [],
+      void Function()? scrollEndedCallback})
+      : _scrollEndedCallback = scrollEndedCallback ?? false;
 
   @override
   Widget build(BuildContext context) {
     var controller = useScrollController();
 
     useEffect(() {
-      controller.addListener(() {
-        if (controller.position.pixels == controller.position.maxScrollExtent)
-          print('end of scroll');
-      });
-    }, []);
+      controller.addListener(
+        () {
+          if (controller.position.pixels ==
+              controller.position.maxScrollExtent) {
+            print('end reached');
+
+            if (_scrollEndedCallback is Function) _scrollEndedCallback();
+          }
+        },
+      );
+    }, [controller]);
 
     return ListView.separated(
       controller: controller,
@@ -191,9 +201,10 @@ class ListWidget extends HookWidget {
         endIndent: 10,
         color: Theme.of(context).primaryColor,
       ),
-      itemCount: jsonObjects.length + 1,
+      itemCount:
+          showLoading.value ? jsonObjects.length + 1 : jsonObjects.length,
       itemBuilder: (_, index) {
-        if (index == jsonObjects.length)
+        if (showLoading.value && index == jsonObjects.length)
           return Center(child: LinearProgressIndicator());
 
         var title = jsonObjects[index][propertyNames[0]];
