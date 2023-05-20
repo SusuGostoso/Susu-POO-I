@@ -77,5 +77,8 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 7/8 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/6d6f98d25b191f4e8a38fc2b8f291479a565c604) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/blob/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%204/EXERCICIO_7.dart) | [:computer: Demo Online](https://zapp.run/edit/receita-8-exercicio-7-z32i06k132j0)
 - [Exercício 8/8 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/aa3672873fa2dcaf456ebb310779c63c6508122e) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/blob/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%204/EXERCICIO_8.dart) | [:computer: Demo Online](https://zapp.run/edit/receita-8-exercicio-8-z42i06kr42j0)
 
-#### Exercício Extra [[Receita 8A]](https://drive.google.com/file/d/1dZu5Zc7wxExYpF_6kQnu-toG7ENxrZNI/view?usp=share_link)
+#### Exercício Extra [[Receita 8A]](https://drive.google.com/file/d/1dZu5Zc7wxExYpF_6kQnu-toG7ENxrZNI/view?usp=share_link) :x:
 > [Passo 1]() / [Passo 2]() / [Passos 3]() / [Passos 4]() /  [Passo 5]() / [Passo 6]() / [Passo 7]() / [Passo 8]()
+
+- [Exercício 1/2 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
+- [Exercício 2/2 :x:]() | [:file_folder:]() | [:computer: Demo Online]()

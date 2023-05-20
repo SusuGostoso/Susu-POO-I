@@ -161,7 +161,7 @@ class NewNavBar extends HookWidget {
   }
 }
 
-class ListWidget extends StatelessWidget {
+class ListWidget extends HookWidget {
   final List jsonObjects;
 
   final List<String> propertyNames;
@@ -172,7 +172,17 @@ class ListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = useScrollController();
+
+    useEffect(() {
+      controller.addListener(() {
+        if (controller.position.pixels == controller.position.maxScrollExtent)
+          print('end of scroll');
+      });
+    }, [controller]);
+
     return ListView.separated(
+      controller: controller,
       padding: EdgeInsets.all(10),
       separatorBuilder: (_, __) => Divider(
         height: 5,
