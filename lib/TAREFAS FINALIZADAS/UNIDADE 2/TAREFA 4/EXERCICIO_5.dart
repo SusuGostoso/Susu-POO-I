@@ -194,7 +194,7 @@ class MyApp extends StatelessWidget {
                         columnNames: value['columnNames']);
 
                   case TableStatus.error:
-                    return const Center(
+                    return Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

@@ -282,7 +282,7 @@ class MyApp extends StatelessWidget {
                     );
 
                   case TableStatus.error:
-                    return const Center(
+                    return Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
