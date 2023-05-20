@@ -76,3 +76,4 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 6/8 :heavy_check_mark:]() | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/blob/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%204/EXERCICIO_6.dart)
 - [Exercício 7/8 :heavy_check_mark:]() | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/blob/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%204/EXERCICIO_7.dart)
 - [Exercício 8/8 :x:]() | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/blob/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%204/EXERCICIO_8.dart)
+
