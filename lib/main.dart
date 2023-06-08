@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_hooks/flutter_hooks.dart';
-
 import 'package:http/http.dart' as http;
-
 import 'dart:convert';
 
 enum TableStatus { idle, loading, ready, error }
@@ -17,24 +14,24 @@ class DataService {
     'itemType': ItemType.none
   });
 
-  bool isLoading = false; // Nova variável para indicar se está carregando
-
   void carregar(index) {
     final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
-
-    tableStateNotifier.value = {
-      'status': TableStatus.loading,
-      'dataObjects': []
-    };
-
-    isLoading = true; // Define isLoading como true
 
     funcoes[index]();
   }
 
   void carregarCafes() {
     //ignorar solicitação se uma requisição já estiver em curso
+
     if (tableStateNotifier.value['status'] == TableStatus.loading) return;
+
+    if (tableStateNotifier.value['itemType'] != ItemType.coffee) {
+      tableStateNotifier.value = {
+        'status': TableStatus.loading,
+        'dataObjects': [],
+        'itemType': ItemType.coffee
+      };
+    }
 
     var coffeesUri = Uri(
         scheme: 'https',
@@ -60,8 +57,6 @@ class DataService {
         'propertyNames': ["blend_name", "origin", "variety"],
         'columnNames': ["Nome", "Origem", "Tipo"]
       };
-
-      isLoading = false;
     });
   }
 
@@ -69,6 +64,14 @@ class DataService {
     //ignorar solicitação se uma requisição já estiver em curso
 
     if (tableStateNotifier.value['status'] == TableStatus.loading) return;
+
+    if (tableStateNotifier.value['itemType'] != ItemType.nation) {
+      tableStateNotifier.value = {
+        'status': TableStatus.loading,
+        'dataObjects': [],
+        'itemType': ItemType.nation
+      };
+    }
 
     var nationsUri = Uri(
         scheme: 'https',
@@ -99,8 +102,6 @@ class DataService {
         ],
         'columnNames': ["Nome", "Capital", "Idioma", "Esporte"]
       };
-
-      isLoading = false;
     });
   }
 
@@ -108,6 +109,16 @@ class DataService {
     //ignorar solicitação se uma requisição já estiver em curso
 
     if (tableStateNotifier.value['status'] == TableStatus.loading) return;
+
+    //emitir estado loading se items em exibição não forem cervejas
+
+    if (tableStateNotifier.value['itemType'] != ItemType.beer) {
+      tableStateNotifier.value = {
+        'status': TableStatus.loading,
+        'dataObjects': [],
+        'itemType': ItemType.beer
+      };
+    }
 
     var beersUri = Uri(
         scheme: 'https',
@@ -130,8 +141,6 @@ class DataService {
         'propertyNames': ["name", "style", "ibu"],
         'columnNames': ["Nome", "Estilo", "IBU"]
       };
-
-      isLoading = false;
     });
   }
 }
@@ -145,12 +154,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final functionsMap = {
-    ItemType.beer: dataService.carregarCervejas,
-    ItemType.coffee: dataService.carregarCafes,
-    ItemType.nation: dataService.carregarNacoes
-  };
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -165,17 +168,17 @@ class MyApp extends StatelessWidget {
               builder: (_, value, __) {
                 switch (value['status']) {
                   case TableStatus.idle:
-                    return Center(child: Text("Toque algum botão, abaixo..."));
+                    return Center(child: Text("Toque em algum botão"));
 
                   case TableStatus.loading:
                     return Center(child: CircularProgressIndicator());
 
                   case TableStatus.ready:
-                    return ListWidget(
-                      jsonObjects: value['dataObjects'],
-                      propertyNames: value['propertyNames'],
-                      scrollEndedCallback: functionsMap[value['itemType']],
-                    );
+                    return SingleChildScrollView(
+                        child: DataTableWidget(
+                            jsonObjects: value['dataObjects'],
+                            propertyNames: value['propertyNames'],
+                            columnNames: value['columnNames']));
 
                   case TableStatus.error:
                     return Text("Lascou");
@@ -219,74 +222,32 @@ class NewNavBar extends HookWidget {
   }
 }
 
-class ListWidget extends HookWidget {
-  final dynamic _scrollEndedCallback;
-
+class DataTableWidget extends StatelessWidget {
   final List jsonObjects;
+
+  final List<String> columnNames;
 
   final List<String> propertyNames;
 
-  ListWidget(
+  DataTableWidget(
       {this.jsonObjects = const [],
-      this.propertyNames = const [],
-      void Function()? scrollEndedCallback})
-      : _scrollEndedCallback = scrollEndedCallback ?? false;
+      this.columnNames = const [],
+      this.propertyNames = const []});
 
   @override
   Widget build(BuildContext context) {
-    var controller = useScrollController();
-
-    useEffect(() {
-      controller.addListener(
-        () {
-          if (controller.position.pixels ==
-              controller.position.maxScrollExtent) {
-            print('end reached');
-
-            if (_scrollEndedCallback is Function) _scrollEndedCallback();
-          }
-        },
-      );
-    }, [controller]);
-
-    return ListView.separated(
-      controller: controller,
-      padding: EdgeInsets.all(10),
-      separatorBuilder: (_, __) => Divider(
-        height: 5,
-        thickness: 2,
-        indent: 10,
-        endIndent: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      itemCount: jsonObjects.length + 1,
-      itemBuilder: (_, index) {
-        if (index == jsonObjects.length)
-          return Center(child: LinearProgressIndicator());
-
-        var title = jsonObjects[index][propertyNames[0]];
-
-        var content = propertyNames
-            .sublist(1)
-            .map((prop) => jsonObjects[index][prop])
-            .join(" - ");
-
-        return Card(
-            shadowColor: Theme.of(context).primaryColor,
-            child: Column(children: [
-              SizedBox(height: 10),
-
-              //a primeira propriedade vai em negrito
-
-              Text("${title}\n", style: TextStyle(fontWeight: FontWeight.bold)),
-
-              //as demais vão normais
-
-              Text(content),
-
-              SizedBox(height: 10)
-            ]));
-      },
-    );
+    return DataTable(
+        columns: columnNames
+            .map((name) => DataColumn(
+                label: Expanded(
+                    child: Text(name,
+                        style: TextStyle(fontStyle: FontStyle.italic)))))
+            .toList(),
+        rows: jsonObjects
+            .map((obj) => DataRow(
+                cells: propertyNames
+                    .map((propName) => DataCell(Text(obj[propName])))
+                    .toList()))
+            .toList());
   }
 }
