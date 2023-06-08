@@ -25,6 +25,9 @@ class DataService {
             : n;
   }
 
+  //Esse método get permite acessar a propriedade _numberOfItems de forma read-only, ou seja, apenas para leitura. Agora você pode utilizar dataService.numberOfItems para obter o valor atual de _numberOfItems em outras partes do código.
+  int get numberOfItems => _numberOfItems;
+
   final ValueNotifier<Map<String, dynamic>> tableStateNotifier = ValueNotifier({
     'status': TableStatus.idle,
     'dataObjects': [],
