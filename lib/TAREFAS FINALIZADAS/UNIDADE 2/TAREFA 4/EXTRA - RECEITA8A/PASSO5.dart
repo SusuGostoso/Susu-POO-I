@@ -33,9 +33,6 @@ class DataService {
   }
 
   void carregarCafes() {
-    //ignorar solicitação se uma requisição já estiver em curso
-    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
-
     var coffeesUri = Uri(
         scheme: 'https',
         host: 'random-data-api.com',
@@ -44,14 +41,6 @@ class DataService {
 
     http.read(coffeesUri).then((jsonString) {
       var coffeesJson = jsonDecode(jsonString);
-
-      //se já houver cafés no estado da tabela...
-
-      if (tableStateNotifier.value['status'] != TableStatus.loading)
-        coffeesJson = [
-          ...tableStateNotifier.value['dataObjects'],
-          ...coffeesJson
-        ];
 
       tableStateNotifier.value = {
         'itemType': ItemType.coffee,
@@ -66,10 +55,6 @@ class DataService {
   }
 
   void carregarNacoes() {
-    //ignorar solicitação se uma requisição já estiver em curso
-
-    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
-
     var nationsUri = Uri(
         scheme: 'https',
         host: 'random-data-api.com',
@@ -78,14 +63,6 @@ class DataService {
 
     http.read(nationsUri).then((jsonString) {
       var nationsJson = jsonDecode(jsonString);
-
-      //se já houver nações no estado da tabela...
-
-      if (tableStateNotifier.value['status'] != TableStatus.loading)
-        nationsJson = [
-          ...tableStateNotifier.value['dataObjects'],
-          ...nationsJson
-        ];
 
       tableStateNotifier.value = {
         'itemType': ItemType.nation,
@@ -105,10 +82,6 @@ class DataService {
   }
 
   void carregarCervejas() {
-    //ignorar solicitação se uma requisição já estiver em curso
-
-    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
-
     var beersUri = Uri(
         scheme: 'https',
         host: 'random-data-api.com',
@@ -117,11 +90,6 @@ class DataService {
 
     http.read(beersUri).then((jsonString) {
       var beersJson = jsonDecode(jsonString);
-
-      //se já houver cervejas no estado da tabela...
-
-      if (tableStateNotifier.value['status'] != TableStatus.loading)
-        beersJson = [...tableStateNotifier.value['dataObjects'], ...beersJson];
 
       tableStateNotifier.value = {
         'itemType': ItemType.beer,
