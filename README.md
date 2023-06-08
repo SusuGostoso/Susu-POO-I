@@ -84,7 +84,10 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 2/2 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
 
 ## Tarefa 5 [[Receita 9]](https://drive.google.com/file/d/1qMy4qrsAZnkXLqCSf7uoxFjQ2hXFYUjY/view?usp=sharing) :x:
-> [Passo 1]() / [Passo 2]() / [Passo 3]() / [Passo 4]() /  [Passo 5]() / [Passo 6]() / [Passo 7]() / [Passo 8]()
+> [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/39303ec6bc1b56025f3d390d8eaab791c61ddff7) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/b4e6e68ba829306b57e43d4f9d73007337a61774) / [Passos 3-4](https://github.com/SusuGostoso/Susu-POO-I/commit/52c8f496eb3c2474164e12dc930f92ae27b242f8) /  [Passo 5]() / [Passo 6]() / [Passo 7]() / [Passo 8]()
 
-- [Exercício 1/2 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
-- [Exercício 2/2 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
+- [Exercício 1/5 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
+- [Exercício 2/5 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
+- [Exercício 3/5 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
+- [Exercício 4/5 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
+- [Exercício 5/5 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
