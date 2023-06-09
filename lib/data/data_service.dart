@@ -15,6 +15,10 @@ class DataService {
 
   int _numberOfItems = DEFAULT_N_ITEMS;
 
+  //Itens do PopMenu [ EXERCICIO 4 ]
+  final List<int> _itens = [MIN_N_ITEMS, DEFAULT_N_ITEMS, MAX_N_ITEMS];
+  List<int> get popMenuItens => _itens; //Método get
+
   set numberOfItems(n) {
     _numberOfItems = n < 0
         ? MIN_N_ITEMS
