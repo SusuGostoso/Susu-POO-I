@@ -2,72 +2,52 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../data/data_service.dart';
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int selectedNumberOfItems = DataService().numberOfItems;
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Dicas"),
-          actions: [
+        theme: ThemeData(primarySwatch: Colors.deepPurple),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(title: const Text("Dicas"), actions: [
             PopupMenuButton(
               itemBuilder: (_) => [3, 7, 15]
-                  .map(
-                    (num) => CheckedPopupMenuItem(
-                      value: num,
-                      checked: selectedNumberOfItems == num,
-                      child: Text("Carregar $num itens por vez"),
-                    ),
-                  )
+                  .map((num) => PopupMenuItem(
+                        value: num,
+                        child: Text("Carregar $num itens por vez"),
+                      ))
                   .toList(),
               onSelected: (number) {
-                setState(() {
-                  selectedNumberOfItems = number;
-                });
                 dataService.numberOfItems = number;
               },
             )
-          ],
-        ),
-        body: ValueListenableBuilder(
-          valueListenable: dataService.tableStateNotifier,
-          builder: (_, value, __) {
-            switch (value['status']) {
-              case TableStatus.idle:
-                return Center(child: Text("Toque em algum botão"));
+          ]),
+          body: ValueListenableBuilder(
+              valueListenable: dataService.tableStateNotifier,
+              builder: (_, value, __) {
+                switch (value['status']) {
+                  case TableStatus.idle:
+                    return Center(child: Text("Toque em algum botão"));
 
-              case TableStatus.loading:
-                return Center(child: CircularProgressIndicator());
+                  case TableStatus.loading:
+                    return Center(child: CircularProgressIndicator());
 
-              case TableStatus.ready:
-                return SingleChildScrollView(
-                  child: DataTableWidget(
-                    jsonObjects: value['dataObjects'],
-                    propertyNames: value['propertyNames'],
-                    columnNames: value['columnNames'],
-                  ),
-                );
+                  case TableStatus.ready:
+                    return SingleChildScrollView(
+                        child: DataTableWidget(
+                            jsonObjects: value['dataObjects'],
+                            propertyNames: value['propertyNames'],
+                            columnNames: value['columnNames']));
 
-              case TableStatus.error:
-                return Text("Lascou");
-            }
+                  case TableStatus.error:
+                    return Text("Lascou");
+                }
 
-            return Text("...");
-          },
-        ),
-        bottomNavigationBar:
-            NewNavBar(itemSelectedCallback: dataService.carregar),
-      ),
-    );
+                return Text("...");
+              }),
+          bottomNavigationBar:
+              NewNavBar(itemSelectedCallback: dataService.carregar),
+        ));
   }
 }
 
