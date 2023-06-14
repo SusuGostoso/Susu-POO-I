@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../data/data_service.dart';
+import 'package:flutter/gestures.dart';
 
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }
 
 class _MyAppState extends State<MyApp> {
@@ -13,6 +23,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: MyCustomScrollBehavior(),
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -50,6 +61,7 @@ class _MyAppState extends State<MyApp> {
 
               case TableStatus.ready:
                 return SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
                   child: DataTableWidget(
                     jsonObjects: value['dataObjects'],
                     propertyNames: value['propertyNames'],
@@ -115,18 +127,21 @@ class DataTableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DataTable(
-        columns: columnNames
-            .map((name) => DataColumn(
-                label: Expanded(
-                    child: Text(name,
-                        style: TextStyle(fontStyle: FontStyle.italic)))))
-            .toList(),
-        rows: jsonObjects
-            .map((obj) => DataRow(
-                cells: propertyNames
-                    .map((propName) => DataCell(Text(obj[propName])))
-                    .toList()))
-            .toList());
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: DataTable(
+          columns: columnNames
+              .map((name) => DataColumn(
+                  label: Expanded(
+                      child: Text(name,
+                          style: TextStyle(fontStyle: FontStyle.italic)))))
+              .toList(),
+          rows: jsonObjects
+              .map((obj) => DataRow(
+                  cells: propertyNames
+                      .map((propName) => DataCell(Text(obj[propName])))
+                      .toList()))
+              .toList()),
+    );
   }
 }
