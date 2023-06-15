@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 
 import 'dart:convert';
 
+import '../util/ordenador.dart';
+
 enum TableStatus { idle, loading, ready, error }
 
 enum ItemType {
@@ -60,6 +62,24 @@ class DataService {
     carregarPorTipo(params[index]);
   }
 
+  void ordenarEstadoAtual(String propriedade) {
+    List objetos = tableStateNotifier.value['dataObjects'] ?? [];
+
+    if (objetos == []) return;
+
+    Ordenador ord = Ordenador();
+
+    var objetosOrdenados = [];
+
+    final type = tableStateNotifier.value['itemType'];
+
+    if (type == ItemType.beer && propriedade == "name") {
+      objetosOrdenados = ord.ordenarCervejasPorNomeCrescente(objetos);
+    }
+
+    emitirEstadoOrdenado(objetosOrdenados, propriedade);
+  }
+
   Uri montarUri(ItemType type) {
     return Uri(
         scheme: 'https',
@@ -76,6 +96,18 @@ class DataService {
     json = [...tableStateNotifier.value['dataObjects'], ...json];
 
     return json;
+  }
+
+  void emitirEstadoOrdenado(List objetosOrdenados, String propriedade) {
+    var estado = tableStateNotifier.value;
+
+    estado['dataObjects'] = objetosOrdenados;
+
+    estado['sortCriteria'] = propriedade;
+
+    estado['ascending'] = true;
+
+    tableStateNotifier.value = estado;
   }
 
   void emitirEstadoCarregando(ItemType type) {
@@ -113,7 +145,7 @@ class DataService {
 
     var uri = montarUri(type);
 
-    var json = await acessarApi(uri);
+    var json = await acessarApi(uri); //, type);
 
     emitirEstadoPronto(type, json);
   }
