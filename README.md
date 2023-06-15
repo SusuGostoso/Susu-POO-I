@@ -83,11 +83,18 @@ Meu aplicativo Flutter a ser desenvolvido na disciplina de "Programação Orient
 - [Exercício 1/2 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
 - [Exercício 2/2 :x:]() | [:file_folder:]() | [:computer: Demo Online]()
 
-## Tarefa 5 [[Receita 9]](https://drive.google.com/file/d/1qMy4qrsAZnkXLqCSf7uoxFjQ2hXFYUjY/view?usp=sharing) :x:
+## Tarefa 5 [[Receita 9]](https://drive.google.com/file/d/1qMy4qrsAZnkXLqCSf7uoxFjQ2hXFYUjY/view?usp=sharing) :heavy_check_mark:
 > [Passo 1](https://github.com/SusuGostoso/Susu-POO-I/commit/39303ec6bc1b56025f3d390d8eaab791c61ddff7) / [Passo 2](https://github.com/SusuGostoso/Susu-POO-I/commit/b4e6e68ba829306b57e43d4f9d73007337a61774) / [Passos 3-4](https://github.com/SusuGostoso/Susu-POO-I/commit/52c8f496eb3c2474164e12dc930f92ae27b242f8) /  [Passo 5](https://github.com/SusuGostoso/Susu-POO-I/commit/b45cd6c0cbd981545779f7adc1bf00e613ca0400) / [Passo 6](https://github.com/SusuGostoso/Susu-POO-I/commit/12ccbcc48e692f7bd860512e6b99707dcd1d3da4) / [Passo 7](https://github.com/SusuGostoso/Susu-POO-I/commit/2bffeeabd731cecdb5963c8304c600588fbd5494)
 
-- [Exercício 1/5 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/102300a05acacf7c528ab9df8af80f2714a905db) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_1) | [:computer: Demo Online]()
-- [Exercício 2/5 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/3b962992a5d01bdfddff4387c3548ffb20be0993) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_2) | [:computer: Demo Online]()
-- [Exercício 3/5 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/93161f5723451462a36df6f80bfd90e9df422dde) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_3) | [:computer: Demo Online]()
-- [Exercício 4/5 :heavy_check_mark:](https://github.com/SusuGostoso/Susu-POO-I/commit/9185295575c8db69ca02f47174d63c990e54bbed) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_4) | [:computer: Demo Online]()
-- [Exercício 5/5 :x:]() | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_5) | [:computer: Demo Online]()
+- [Exercício 1/5](https://github.com/SusuGostoso/Susu-POO-I/commit/102300a05acacf7c528ab9df8af80f2714a905db) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_1)
+- [Exercício 2/5](https://github.com/SusuGostoso/Susu-POO-I/commit/3b962992a5d01bdfddff4387c3548ffb20be0993) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_2)
+- [Exercício 3/5](https://github.com/SusuGostoso/Susu-POO-I/commit/93161f5723451462a36df6f80bfd90e9df422dde) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_3)
+- [Exercício 4/5](https://github.com/SusuGostoso/Susu-POO-I/commit/9185295575c8db69ca02f47174d63c990e54bbed) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_4)
+- [Exercício 5/5](https://github.com/SusuGostoso/Susu-POO-I/commit/4d0e1708ab5c054c5bc0c3fea4a478605e87339a) | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%205/EXERCICIO_5)
+
+## Tarefa 6 [[Receita 10]](https://drive.google.com/file/d/18L8VAmqItkehajCpsvPlM4NL2MLaoO_Q/view?usp=sharing) :x:
+> [Passos 1-2]() / [Passo 3]() / [Passo 4]() /  [Passo 5]() / [Passo 6]() / [Passo 7]()
+
+- [Exercício 1/3 :x:]() | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%206/EXERCICIO_1)
+- [Exercício 2/3 :x:]() | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%206/EXERCICIO_2)
+- [Exercício 3/3 :x:]() | [:file_folder:](https://github.com/SusuGostoso/Susu-POO-I/tree/master/lib/TAREFAS%20FINALIZADAS/UNIDADE%202/TAREFA%206/EXERCICIO_3)
