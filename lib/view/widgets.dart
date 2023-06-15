@@ -127,21 +127,20 @@ class DataTableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: DataTable(
-          columns: columnNames
-              .map((name) => DataColumn(
-                  label: Expanded(
-                      child: Text(name,
-                          style: TextStyle(fontStyle: FontStyle.italic)))))
-              .toList(),
-          rows: jsonObjects
-              .map((obj) => DataRow(
-                  cells: propertyNames
-                      .map((propName) => DataCell(Text(obj[propName])))
-                      .toList()))
-              .toList()),
-    );
+    return DataTable(
+        columns: columnNames
+            .map((name) => DataColumn(
+                onSort: (columnIndex, ascending) =>
+                    dataService.ordenarEstadoAtual(propertyNames[columnIndex]),
+                label: Expanded(
+                    child: Text(name,
+                        style: TextStyle(fontStyle: FontStyle.italic)))))
+            .toList(),
+        rows: jsonObjects
+            .map((obj) => DataRow(
+                cells: propertyNames
+                    .map((propName) => DataCell(Text(obj[propName])))
+                    .toList()))
+            .toList());
   }
 }
