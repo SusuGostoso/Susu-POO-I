@@ -1,3 +1,5 @@
+//data_service.dart
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -122,8 +124,10 @@ class DataService {
     List objetos = tableStateNotifier.value['dataObjects'] ?? [];
     if (objetos == []) return;
     Ordenador ord = Ordenador();
-    Decididor d = ComparadorJSON(propriedade, crescente);
-    var objetosOrdenados = ord.ordenarFuderoso(objetos, d);
+    bool comparador(a, b) {
+      return a[propriedade].compareTo(b[propriedade]) > 0;
+    }
+    var objetosOrdenados = ord.ordenar(objetos, comparador);
 
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
