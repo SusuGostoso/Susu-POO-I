@@ -1,91 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../data/data_service.dart';
-import 'package:flutter/gestures.dart';
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class MyCustomScrollBehavior extends MaterialScrollBehavior {
-  // Override behavior methods and getters like dragDevices
-  @override
-  Set<PointerDeviceKind> get dragDevices => {
-        PointerDeviceKind.touch,
-        PointerDeviceKind.mouse,
-      };
-}
-
-class _MyAppState extends State<MyApp> {
-  int selectedNumberOfItems = DataService().numberOfItems;
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      scrollBehavior: MyCustomScrollBehavior(),
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Dicas"),
-          actions: [
+        theme: ThemeData(primarySwatch: Colors.deepPurple),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(title: const Text("Dicas"), actions: [
             PopupMenuButton(
-              itemBuilder: (_) => dataService.popMenuItens
-                  .map(
-                    (num) => CheckedPopupMenuItem(
-                      value: num,
-                      checked: selectedNumberOfItems == num,
-                      child: Text("Carregar $num itens por vez"),
-                    ),
-                  )
+              itemBuilder: (_) => [3, 7, 15]
+                  .map((num) => PopupMenuItem(
+                        value: num,
+                        child: Text("Carregar $num itens por vez"),
+                      ))
                   .toList(),
               onSelected: (number) {
-                setState(() {
-                  selectedNumberOfItems = number;
-                });
                 dataService.numberOfItems = number;
               },
             )
-          ],
-        ),
-        body: ValueListenableBuilder(
-          valueListenable: dataService.tableStateNotifier,
-          builder: (_, value, __) {
-            switch (value['status']) {
-              case TableStatus.idle:
-                return Center(child: Text("Toque em algum botão"));
-
-              case TableStatus.loading:
-                return Center(child: CircularProgressIndicator());
-
-              case TableStatus.ready:
-                return SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: DataTableWidget(
-                    jsonObjects: value['dataObjects'],
-                    propertyNames: value['propertyNames'],
-                    columnNames: value['columnNames'],
-                  ),
-                );
-
-              case TableStatus.error:
-                return Text("Lascou");
-            }
-
-            return Text("...");
-          },
-        ),
-        bottomNavigationBar:
-            NewNavBar(itemSelectedCallback: dataService.carregar),
-      ),
-    );
+          ]),
+          body: ValueListenableBuilder(
+              valueListenable: dataService.tableStateNotifier,
+              builder: (_, value, __) {
+                switch (value['status']) {
+                  case TableStatus.idle:
+                    return Center(child: Text("Toque em algum botão"));
+                  case TableStatus.loading:
+                    return Center(child: CircularProgressIndicator());
+                  case TableStatus.ready:
+                    return SingleChildScrollView(
+                        child: DataTableWidget(
+                      jsonObjects: value['dataObjects'],
+                      propertyNames: value['propertyNames'],
+                      columnNames: value['columnNames'],
+                      sortCallback: dataService.ordenarEstadoAtual,
+                    ));
+                  case TableStatus.error:
+                    return Text("Lascou");
+                }
+                return Text("...");
+              }),
+          bottomNavigationBar:
+              NewNavBar(itemSelectedCallback: dataService.carregar),
+        ));
   }
 }
 
 class NewNavBar extends HookWidget {
   final _itemSelectedCallback;
-
   NewNavBar({itemSelectedCallback})
       : _itemSelectedCallback = itemSelectedCallback ?? (int) {}
 
@@ -96,7 +61,6 @@ class NewNavBar extends HookWidget {
     return BottomNavigationBar(
         onTap: (index) {
           state.value = index;
-
           _itemSelectedCallback(index);
         },
         currentIndex: state.value,
@@ -113,17 +77,20 @@ class NewNavBar extends HookWidget {
   }
 }
 
+void _empty(String, bool) {}
+
 class DataTableWidget extends StatelessWidget {
+  final _sortCallback;
   final List jsonObjects;
-
   final List<String> columnNames;
-
   final List<String> propertyNames;
 
   DataTableWidget(
       {this.jsonObjects = const [],
       this.columnNames = const [],
-      this.propertyNames = const []});
+      this.propertyNames = const [],
+      sortCallback})
+      : _sortCallback = sortCallback ?? _empty;
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +98,9 @@ class DataTableWidget extends StatelessWidget {
         columns: columnNames
             .map((name) => DataColumn(
                 onSort: (columnIndex, ascending) =>
-                    dataService.ordenarEstadoAtual(propertyNames[columnIndex]),
+                    _sortCallback(propertyNames[columnIndex], ascending)
+                //dataService.ordenarEstadoAtual(propertyNames[columnIndex]),
+                ,
                 label: Expanded(
                     child: Text(name,
                         style: TextStyle(fontStyle: FontStyle.italic)))))
