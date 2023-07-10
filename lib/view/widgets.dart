@@ -63,16 +63,25 @@ class NewNavBar extends HookWidget {
           state.value = index;
           _itemSelectedCallback(index);
         },
+        type: BottomNavigationBarType.fixed,
         currentIndex: state.value,
-        items: const [
+        items: [
           BottomNavigationBarItem(
             label: "Cafés",
             icon: Icon(Icons.coffee_outlined),
           ),
           BottomNavigationBarItem(
-              label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
+            label: "Cervejas",
+            icon: Icon(Icons.local_drink_outlined),
+          ),
           BottomNavigationBarItem(
-              label: "Nações", icon: Icon(Icons.flag_outlined))
+            label: "Sistemas",
+            icon: Icon(Icons.computer),
+          ),
+          BottomNavigationBarItem(
+            label: "Nações",
+            icon: Icon(Icons.flag_outlined),
+          ),
         ]);
   }
 }

@@ -74,6 +74,7 @@ enum ItemType {
   beer,
   coffee,
   nation,
+  computer,
   none;
 
   String get asString => '$name';
@@ -81,16 +82,20 @@ enum ItemType {
       ? ["Nome", "Origem", "Tipo"]
       : this == beer
           ? ["Nome", "Estilo", "IBU"]
-          : this == nation
-              ? ["Nome", "Capital", "Idioma", "Esporte"]
-              : [];
+          : this == computer
+              ? ["Pataforma", "Tipo", "Sistema"]
+              : this == nation
+                  ? ["Nome", "Capital", "Idioma", "Esporte"]
+                  : [];
   List<String> get properties => this == coffee
       ? ["blend_name", "origin", "variety"]
       : this == beer
           ? ["name", "style", "ibu"]
-          : this == nation
-              ? ["nationality", "capital", "language", "national_sport"]
-              : [];
+          : this == computer
+              ? ["platform", "type", "os"]
+              : this == nation
+                  ? ["nationality", "capital", "language", "national_sport"]
+                  : [];
 }
 
 class DataService {
@@ -115,7 +120,12 @@ class DataService {
   });
 
   void carregar(index) {
-    final params = [ItemType.coffee, ItemType.beer, ItemType.nation];
+    final params = [
+      ItemType.coffee,
+      ItemType.beer,
+      ItemType.computer,
+      ItemType.nation
+    ];
     carregarPorTipo(params[index]);
   }
 
@@ -127,6 +137,7 @@ class DataService {
     bool comparador(a, b) {
       return a[propriedade].compareTo(b[propriedade]) > 0;
     }
+
     var objetosOrdenados = ord.ordenar(objetos, comparador);
 
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
